@@ -1,0 +1,17 @@
+.imgLogo {
+    height: 10rem;
+    width: 10rem;
+    display: block;
+    margin: 150px auto auto auto;
+    animation: logo 2s infinite;
+  }
+  
+  @keyframes logo {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  

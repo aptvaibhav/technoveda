@@ -1,6 +1,6 @@
 import React from "react";
-import curved from "../assets/curved.png";
-import vector from "../assets/vector.png";
+import curved from "../../../assets/curved.png";
+import vector from "../../../assets/vector.png";
 export default function Landing() {
     return (
         <>
