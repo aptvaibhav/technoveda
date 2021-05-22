@@ -2,10 +2,11 @@ import React from "react";
 import './diseaseCard.css';
 import stockImg from "../../../assets/stock.jpg";
 import CommonCard from './CommonCard';
-// import { Link } from 'react-router-dom';
+
+
 
 const Diseases = () => {
-var hit = "/breastcancer"
+
     return (
         <>
 
@@ -18,7 +19,8 @@ var hit = "/breastcancer"
                 diseaseName="Breast Cancer"
                 diseaseDetial="Disease Detail Here"
                 btn="fill form"
-                link={hit}
+                link=""
+
             />
             <CommonCard
                 imgsrc={stockImg}
@@ -37,6 +39,7 @@ var hit = "/breastcancer"
                 diseaseName="Diabetes"
                 diseaseDetial="Disease Detail Here"
                 btn="fill form"
+                
             />
             <CommonCard
                 imgsrc={stockImg}

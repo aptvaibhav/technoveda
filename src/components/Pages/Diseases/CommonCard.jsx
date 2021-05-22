@@ -1,5 +1,5 @@
 import React from "react";
-import { Link,NavLink } from 'react-router-dom';
+
 
 const CommonCard = (props) => {
     return (
@@ -9,8 +9,8 @@ const CommonCard = (props) => {
             <img class="do-img" src={props.imgsrc} alt=""/>
             <div class="do-info">
                 <h1 class="do-name">{props.diseaseName}</h1>
-               
-                <NavLink to={props.link} className='button'>{props.btn}</NavLink>
+                <p class="do-detail">{props.diseaseDetail}</p>
+                <a href="{props.link}" class="details">{props.btn}</a>
             </div>
         </div>
 
