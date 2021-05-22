@@ -1,7 +1,8 @@
 import React from "react";
 import './disease-details.css';
 
-export default function Diabetes() {
+
+export default function HeartDisease() {
     return (
         <>
         <br />
@@ -10,42 +11,72 @@ export default function Diabetes() {
         <div class="form">
         <form>
   <label>
-  Pregnancies:
+  SEX:
     <input type="text" name="Pregnancies" />
   </label>
   <br />
   <label>
-  Glucose:
+  AGE:
     <input type="text" name="Glucose" />
   </label>
   <br />
   <label>
-  BloodPressure:
-    <input type="text" name="BloodPressure" />
-  </label>
-  <br />
-  <label>
-  SkinThickness:
+  CP:
     <input type="text" name="SkinThickness" />
   </label>
   <br />
   <label>
-  Insulin:
+  TRESTBPS:
     <input type="text" name="Insulin" />
   </label>
   <br />
   <label>
-  BMI:
+  CHOLESTEROL:
     <input type="text" name="BMI" />
   </label>
   <br />
   <label>
-  DiabetesPedigreeFunction:
+  FBS:
     <input type="text" name="DiabetesPedigreeFunction" />
   </label>
   <br />
   <label>
-  Age:
+  RESTECG:
+    <input type="text" name="Age" />
+  </label>
+  <br />
+  <label>
+  THALACH:
+    <input type="text" name="Age" />
+  </label>
+  <br />
+  <label>
+  EXANG:
+    <input type="text" name="Age" />
+  </label>
+  <br />
+  <label>
+  OLDPEAK:
+    <input type="text" name="Age" />
+  </label>
+  <br />
+  <label>
+  SLOPE:
+    <input type="text" name="Age" />
+  </label>
+  <br />
+  <label>
+  CA:
+    <input type="text" name="Age" />
+  </label>
+  <br />
+  <label>
+  THAL:
+    <input type="text" name="Age" />
+  </label>
+  <br />
+  <label>
+  TARGET:
     <input type="text" name="Age" />
   </label>
   <br />

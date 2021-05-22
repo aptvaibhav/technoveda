@@ -1,4 +1,5 @@
 import React, {Suspense}  from "react";
+import Diseases from "../src/components/Pages/Diseases/Diseases";
 import { Switch, Route ,BrowserRouter as Router} from "react-router-dom";
 import Landing from "../src/components/Pages/Landing/Landing";
 import Diabetes from "../src/components/Pages/Diseases/Diabetes";
@@ -23,8 +24,8 @@ export default function App() {
     <Landing />
     {/* <Footer /> */}
     </Route>
-    <Route exact path="/diabetes">
-    <Diabetes />
+    <Route exact path="/Diseases">
+    <Diseases />
     </Route>
     <Route exact path="/login">
     <Login />

@@ -1,7 +1,8 @@
 import React from "react";
 import './disease-details.css';
 
-export default function Diabetes() {
+
+export default function Cardiovascular() {
     return (
         <>
         <br />
@@ -10,42 +11,62 @@ export default function Diabetes() {
         <div class="form">
         <form>
   <label>
-  Pregnancies:
+  ID:
     <input type="text" name="Pregnancies" />
   </label>
   <br />
   <label>
-  Glucose:
+  AGE:
     <input type="text" name="Glucose" />
   </label>
   <br />
   <label>
-  BloodPressure:
-    <input type="text" name="BloodPressure" />
-  </label>
-  <br />
-  <label>
-  SkinThickness:
+  GENDER:
     <input type="text" name="SkinThickness" />
   </label>
   <br />
   <label>
-  Insulin:
+  WEIGHT:
     <input type="text" name="Insulin" />
   </label>
   <br />
   <label>
-  BMI:
+  AP_HI:
     <input type="text" name="BMI" />
   </label>
   <br />
   <label>
-  DiabetesPedigreeFunction:
+  AP_LO:
     <input type="text" name="DiabetesPedigreeFunction" />
   </label>
   <br />
   <label>
-  Age:
+  CHOLESTEROL:
+    <input type="text" name="Age" />
+  </label>
+  <br />
+  <label>
+  GLUC:
+    <input type="text" name="Age" />
+  </label>
+  <br />
+  <label>
+  SMOKE:
+    <input type="text" name="Age" />
+  </label>
+  <br />
+  <label>
+  ALCO:
+    <input type="text" name="Age" />
+  </label>
+  <br />
+  <label>
+  ACTIVE:
+    <input type="text" name="Age" />
+  </label>
+  <br />
+  <label>
+  CARDIO:
     <input type="text" name="Age" />
   </label>
   <br />

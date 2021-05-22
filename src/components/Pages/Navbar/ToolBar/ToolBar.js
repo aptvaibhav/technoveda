@@ -20,7 +20,7 @@ const toolbar = (props) => (
       <div className="toolbar_navigation-items">
         <ul>
           <li>
-            <NavLink to="/diabetes">Diagnose Diseases</NavLink>
+            <NavLink to="/Diseases">Diagnose Diseases</NavLink>
           </li>
 
           <li>
