@@ -1,8 +1,9 @@
 import React from "react";
-
+import {NavLink} from "react-router-dom";
 
 const CommonCard = (props) => {
     return (
+      
         <>
 
         <div class="do-card">
@@ -10,7 +11,8 @@ const CommonCard = (props) => {
             <div class="do-info">
                 <h1 class="do-name">{props.diseaseName}</h1>
                 <p class="do-detail">{props.diseaseDetail}</p>
-                <a href="{props.link}" class="details">{props.btn}</a>
+             
+                <NavLink to="{props.link}||/" class="details">{props.btn}</NavLink>
             </div>
         </div>
 

@@ -28,8 +28,11 @@ export default function App() {
     <Route exact path="/diseases">
     <Diseases />
     </Route>
-    <Route exact path="/diseases/breastcancer">
+    <Route exact path="/diseases/breastcancer" >
     <BreastCancer />
+    </Route>
+    <Route exact path="/diseases/diabetes" >
+    <Diabetes />
     </Route>
     <Route exact path="/login">
     <Login />

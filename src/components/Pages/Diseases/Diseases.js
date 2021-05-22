@@ -19,7 +19,7 @@ const Diseases = () => {
                 diseaseName="Breast Cancer"
                 diseaseDetial="Disease Detail Here"
                 btn="fill form"
-                link=""
+                link="/breastcancer"
 
             />
             <CommonCard
