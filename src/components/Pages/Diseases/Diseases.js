@@ -2,6 +2,8 @@ import React from "react";
 import './diseaseCard.css';
 import stockImg from "../../../assets/stock.jpg";
 import CommonCard from './CommonCard';
+import {NavLink } from "react-router-dom";
+
 
 const Diseases = () => {
 
@@ -17,6 +19,8 @@ const Diseases = () => {
                 diseaseName="Breast Cancer"
                 diseaseDetial="Disease Detail Here"
                 btn="fill form"
+                link=""
+
             />
             <CommonCard
                 imgsrc={stockImg}
@@ -35,6 +39,7 @@ const Diseases = () => {
                 diseaseName="Diabetes"
                 diseaseDetial="Disease Detail Here"
                 btn="fill form"
+                
             />
             <CommonCard
                 imgsrc={stockImg}

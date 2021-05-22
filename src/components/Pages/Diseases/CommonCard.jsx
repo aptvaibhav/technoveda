@@ -9,7 +9,7 @@ const CommonCard = (props) => {
             <div class="do-info">
                 <h1 class="do-name">{props.diseaseName}</h1>
                 <p class="do-detail">{props.diseaseDetail}</p>
-                <a href="#" class="details">{props.btn}</a>
+                <a href="{props.link}" class="details">{props.btn}</a>
             </div>
         </div>
 
