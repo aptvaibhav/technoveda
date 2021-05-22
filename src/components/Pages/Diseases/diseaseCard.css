@@ -73,6 +73,9 @@
     margin-top: 10px;
     transition: all 0.1s ease;
 }
+.details a {
+    color: #000;
+}
 .do-info .details:hover {
     color: #F6F7FA;
     background-color: #333;
