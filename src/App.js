@@ -8,6 +8,7 @@ import Loading from "../src/components/Pages/Loading/Loading";
 import Navbar from "../src/components/Pages/Navbar/Navbar";
 import Login from "../src/components/Pages/Authentication/Login";
 import Signup from "../src/components/Pages/Authentication/Signup";
+import BreastCancer from "../src/components/Pages/Diseases/BreastCancer";
 import "./App.css";
 export default function App() {
   console.log("%cSTOP!", "font-size: 50px; color: red");
@@ -24,8 +25,11 @@ export default function App() {
     <Landing />
     {/* <Footer /> */}
     </Route>
-    <Route exact path="/Diseases">
+    <Route exact path="/diseases">
     <Diseases />
+    </Route>
+    <Route exact path="/diseases/breastcancer">
+    <BreastCancer />
     </Route>
     <Route exact path="/login">
     <Login />
