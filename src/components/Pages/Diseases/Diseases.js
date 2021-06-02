@@ -2,10 +2,6 @@ import React from "react";
 import './diseaseCard.css';
 import stockImg from "../../../assets/stock.jpg";
 import CommonCard from './CommonCard';
-<<<<<<< HEAD
-
-=======
->>>>>>> 739a6840c3127a1788a088d0711bccf5ef46d355
 
 
 const Diseases = () => {
@@ -14,7 +10,7 @@ const Diseases = () => {
         <>
 
         <section class="past-web" id="web">
-        <div class="do-heading">Heading</div>
+         
         <div class="do-cards">
         
             <CommonCard
@@ -22,12 +18,7 @@ const Diseases = () => {
                 diseaseName="Breast Cancer"
                 diseaseDetail="Disease Detail Here"
                 btn="fill form"
-<<<<<<< HEAD
-                link="/breastcancer"
-
-=======
                 link="/BreastCancer"
->>>>>>> 739a6840c3127a1788a088d0711bccf5ef46d355
             />
             <CommonCard
                 imgsrc={stockImg}

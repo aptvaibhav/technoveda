@@ -119,7 +119,7 @@ return (
               {" "}
               Already have an account? <Link to="/login">Login</Link>
             </h5>
-           
+         
             {/* {errors &&
               errors.map((item, index) => (
                 <div key={index} className="alert alert-danger" role="alert">

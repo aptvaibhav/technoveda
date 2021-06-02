@@ -1,9 +1,22 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import './disease-details.css';
+import firebase from "../../../Firebase.js";
+
+
+
 
 
 export default function Diabetes() {
   
+  // const [result,setResult] = useState([]);
+  // const [loading,setLoading] = useState(false);
+
+  
+  const ref = firebase.firestore().collection("diabetes");
+  console.log(ref);
+
+  const [output,setOutput]  = useState('');
+
 
   const [enteredPregnanices,setEnteredPregnancies] = useState('');
   const [enteredGlucose,setEnteredGlucose] = useState('');
@@ -13,6 +26,8 @@ export default function Diabetes() {
   const [enteredBmi,setEnteredBmi] = useState('');
   const [enteredDiabetesPedigree,setEnteredDiabetesPedigree] = useState('');
   const [enteredAge,setEnteredAge] = useState('');
+
+
 
   const pregnanicesChangeHandler = (event) => {
       setEnteredPregnancies(event.target.value);
@@ -39,7 +54,17 @@ export default function Diabetes() {
   const ageChangeHandler = (event) => {
     setEnteredAge(event.target.value);
   }; 
-  var output={};
+  // var output={};
+
+
+
+
+
+
+
+
+
+
   function handleSubmit(e) {
     e.preventDefault();
     // const data = { name: value };
@@ -64,22 +89,48 @@ export default function Diabetes() {
     setEnteredDiabetesPedigree('');
     setEnteredInsulin('');
     setEnteredSkinThickness('');
-    // fetch('http://127.0.0.1:5000/predict').then(response =>{
-    //  return response.json();
-    // }).then((pred)=>{
-    //     output = pred;
-    //     console.log(output);
-    // });
-    fetch('http://127.0.0.1:5000/predict',{
+    fetch('https://technoveda-66fce-default-rtdb.firebaseio.com/diabetes.json').then(response =>{
+     return response.json();
+    }).then((pred)=>{
+        //output = pred.res;
+        setOutput(pred.res);
+        console.log(output);
+      
+    });
+    fetch('https://technoveda-66fce-default-rtdb.firebaseio.com/diabetes.json',{
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
+        "Access-Control-Allow-Origin": "*"
       },
       body: JSON.stringify(submittingValue),
-    }).then(res => res.json())
-      .then(res => console.log(res));
+    }).then(res => res.json());
+      // .then(res => console.log(res));
   }
 
+ 
+
+  // function getResult() {
+  //   setLoading(true);
+  //   ref.onSnapshot((querySnapshot)=>{
+  //       const items = [];
+  //       querySnapshot.forEach((doc)=>{
+  //           items.push(doc.data());
+  //       });
+  //       setResult(items);
+  //       setLoading(false);
+  //       console.log(result);
+  //   });
+  // }
+
+  // useEffect(()=>{
+  //     getResult();
+  //     //console.log("safd");
+  // },[]);
+
+  // if(loading){
+  //   return <h1>Loading....</h1>
+  // }
 
     return (
         <>
@@ -131,9 +182,16 @@ export default function Diabetes() {
   <br />
  
   <input type="submit" value="Submit" />
+
+  
+  
 </form>
+
+
 </div>
-        </>
-    );
+
+ </>
+       
+);
 
 }
