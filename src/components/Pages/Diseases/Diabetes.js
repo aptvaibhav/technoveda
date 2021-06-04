@@ -1,22 +1,9 @@
-import React, {useState,useEffect} from "react";
+import React, {useState} from "react";
 import './disease-details.css';
-import firebase from "../../../Firebase.js";
-
-
-
 
 
 export default function Diabetes() {
   
-  // const [result,setResult] = useState([]);
-  // const [loading,setLoading] = useState(false);
-
-  
-  const ref = firebase.firestore().collection("diabetes");
-  console.log(ref);
-
-  const [output,setOutput]  = useState('');
-
 
   const [enteredPregnanices,setEnteredPregnancies] = useState('');
   const [enteredGlucose,setEnteredGlucose] = useState('');
@@ -26,7 +13,7 @@ export default function Diabetes() {
   const [enteredBmi,setEnteredBmi] = useState('');
   const [enteredDiabetesPedigree,setEnteredDiabetesPedigree] = useState('');
   const [enteredAge,setEnteredAge] = useState('');
-
+  const [output,setOutput] = useState('');
 
 
   const pregnanicesChangeHandler = (event) => {
@@ -54,22 +41,10 @@ export default function Diabetes() {
   const ageChangeHandler = (event) => {
     setEnteredAge(event.target.value);
   }; 
-  // var output={};
-
-
-
-
-
-
-
-
-
+ 
 
   function handleSubmit(e) {
     e.preventDefault();
-    // const data = { name: value };
-    // console.log('submit');
-    // console.log(value);/</form><form>
     const submittingValue = {
      'Pregnancies' : enteredPregnanices,
      'Glucose' : enteredGlucose,
@@ -80,7 +55,7 @@ export default function Diabetes() {
      'DiabetesPedigreeFunction' : enteredDiabetesPedigree,
      'Age' : enteredAge
     };
-    //console.log(enteredPregnanices,enteredGlucose,enteredBloodPressure);
+   
     setEnteredBloodPressure('');
     setEnteredGlucose('');
     setEnteredPregnancies('');
@@ -89,48 +64,37 @@ export default function Diabetes() {
     setEnteredDiabetesPedigree('');
     setEnteredInsulin('');
     setEnteredSkinThickness('');
-    fetch('https://technoveda-66fce-default-rtdb.firebaseio.com/diabetes.json').then(response =>{
-     return response.json();
-    }).then((pred)=>{
-        //output = pred.res;
-        setOutput(pred.res);
-        console.log(output);
-      
-    });
-    fetch('https://technoveda-66fce-default-rtdb.firebaseio.com/diabetes.json',{
+    
+    fetch('http://localhost:5000/diabetes',{
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
-        "Access-Control-Allow-Origin": "*"
+        //"Access-Control-Allow-Origin": "*"
       },
       body: JSON.stringify(submittingValue),
-    }).then(res => res.json());
-      // .then(res => console.log(res));
+    }).then(res => res.text())         
+    .then(text => console.log(text)
+    ).catch((err) => {
+      console.log(err);
+    });
+
+    fetch('http://localhost:5000/diabetes',{
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
+      },
+    }).then(res => res.text())         
+    .then(text => setOutput(text)
+    ).catch((err) => {
+      console.log(err);
+    });
+
+
+     
   }
+  
 
- 
-
-  // function getResult() {
-  //   setLoading(true);
-  //   ref.onSnapshot((querySnapshot)=>{
-  //       const items = [];
-  //       querySnapshot.forEach((doc)=>{
-  //           items.push(doc.data());
-  //       });
-  //       setResult(items);
-  //       setLoading(false);
-  //       console.log(result);
-  //   });
-  // }
-
-  // useEffect(()=>{
-  //     getResult();
-  //     //console.log("safd");
-  // },[]);
-
-  // if(loading){
-  //   return <h1>Loading....</h1>
-  // }
 
     return (
         <>
@@ -182,7 +146,7 @@ export default function Diabetes() {
   <br />
  
   <input type="submit" value="Submit" />
-
+      <p>{output}</p>
   
   
 </form>

@@ -6,7 +6,7 @@
 
   "private": true,
 
-  "proxy": "https://technoveda-66fce-default-rtdb.firebaseio.com/",
+  "proxy": "http://localhost:5000",
 
   "dependencies": {
 
@@ -37,7 +37,7 @@
   "scripts": {
 
     "start": "react-scripts start",
-
+    "start-flask-api": "cd api && venv/bin/flask run",
     "build": "react-scripts build",
 
     "test": "react-scripts test",
