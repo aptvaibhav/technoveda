@@ -111,7 +111,7 @@ export default function HeartDisease() {
       popup.style.display = "none";
     }
     window.onclick = function(event) {
-      if (event.target == popup) {
+      if (event.target === popup) {
         popup.style.display = "none";
       }
     }
@@ -160,7 +160,7 @@ export default function HeartDisease() {
   <br />
   <label>
   SEX:
-    <input type="number" name="Sex" value={enteredSex} onChange={SexChangeHandler} />
+    <input type="text" name="Sex" value={enteredSex} onChange={SexChangeHandler} />
   </label>
   <br />
   <label>
