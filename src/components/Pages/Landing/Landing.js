@@ -1,6 +1,7 @@
 import React from "react";
 import curved from "../../../assets/curved.png";
 import vector from "../../../assets/vector.png";
+import { Link } from "react-router-dom";
 export default function Landing() {
     return (
         <>
@@ -12,10 +13,12 @@ export default function Landing() {
           <h1 className="text-center"> Get yourself Diagnosed for free with us.</h1>
           <button
             type="button"
-            className="btn btn-light need-blood-btn"
+            // className="btn btn-light need-blood-btn"
             
           >
-            Diagnose your disease?
+          <Link to="/diseases" className="btn btn-light need-blood-btn">
+            Click to get Diagnosed
+            </Link>
           </button>
         </div>
       </div>

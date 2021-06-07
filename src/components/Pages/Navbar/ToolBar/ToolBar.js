@@ -15,6 +15,18 @@ const toolbar = (props) => (
         <Link to="/">
           <img src={logo} alt="logo" height="40" width="100" style={{marginTop:"10px"}}/>
         </Link>
+        
+      </div>
+      <div className="toolbar_navigation-items">
+      <div className="tech">
+        <ul>
+          <li>
+          <Link to="/">
+            TechnoVeda
+            </Link>
+          </li>
+        </ul>
+        </div>
       </div>
       <div className="spacer" />
       <div className="toolbar_navigation-items">
