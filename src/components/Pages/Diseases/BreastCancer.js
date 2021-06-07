@@ -1,177 +1,219 @@
-import React from "react";
+import React, {useState} from "react";
 import './disease-details.css';
+import './popup.css';
 
 
 export default function BreastCancer() {
+
+
+  const [enteredRadiusMean,setEnteredRadiusMean] = useState('');
+  const [enteredPerimeterMean,setEnteredPerimeterMean] = useState('');
+  const [enteredAreaMean,setEnteredAreaMean] = useState('');
+
+  const [enteredConcavePointsMean,setEnteredConcavePointsMean] = useState('');
+  const [enteredAreaSe,setEnteredAreaSe] = useState('');
+
+
+  const [enteredRadiusWorst,setEnteredRadiusWorst] = useState('');
+  const [enteredPerimeterWorst,setEnteredPerimeterWorst] = useState('');
+  const [enteredAreaWorst,setEnteredAreaWorst] = useState('');
+
+  const [enteredConcavityWorst,setEnteredConcavityWorst] = useState('');
+  const [enteredConcavePointsWorst,setEnteredConcavePointsWorst] = useState('');
+  const [output,setOutput] = useState('');
+
+
+
+
+  const RadiusMeanChangeHandler = (event) => {
+    setEnteredRadiusMean(event.target.value);
+  }; 
+  const PerimeterMeanChangeHandler = (event) => {
+    setEnteredPerimeterMean(event.target.value);
+  }; 
+  const AreaMeanChangeHandler = (event) => {
+    setEnteredAreaMean(event.target.value);
+  }; 
+
+  const ConcavePointsMeanChangeHandler = (event) => {
+    setEnteredConcavePointsMean(event.target.value);
+  }; 
+  const AreaSeChangeHandler = (event) => {
+    setEnteredAreaSe(event.target.value);
+  }; 
+  const RadiusWorstChangeHandler = (event) => {
+    setEnteredRadiusWorst(event.target.value);
+  }; 
+  const PerimeterWorstChangeHandler = (event) => {
+    setEnteredPerimeterWorst(event.target.value);
+  }; 
+  const AreaWorstChangeHandler = (event) => {
+    setEnteredAreaWorst(event.target.value);
+  }; 
+  const ConcavityWorstChangeHandler = (event) => {
+    setEnteredConcavityWorst(event.target.value);
+  }; 
+  const ConcavePointsWorstChangeHandler = (event) => {
+    setEnteredConcavePointsWorst(event.target.value);
+  }; 
+
+
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const submittingValue = {
+     'radius-mean' : enteredRadiusMean,
+     'perimeter-mean' :enteredPerimeterMean,
+     'area-mean' : enteredAreaMean,
+     'concave-points-mean' : enteredConcavePointsMean,
+     'area-se' : enteredAreaSe,
+     'radius-worst' : enteredRadiusWorst,
+     'perimeter-worst' : enteredPerimeterWorst,
+     'area-worst' : enteredAreaWorst,
+     'concavity-worst' : enteredConcavityWorst,
+     'concave-points-worst' : enteredConcavePointsWorst,
+    };
+   
+    setEnteredRadiusMean('');
+    setEnteredPerimeterMean('');
+    setEnteredAreaMean('');
+    setEnteredConcavePointsMean('');
+    setEnteredAreaSe('');
+    setEnteredRadiusWorst('');
+    setEnteredPerimeterWorst('');
+    setEnteredAreaWorst('');
+    setEnteredConcavityWorst('');
+    setEnteredConcavePointsWorst('');
+
+
+
+
+
+// for result popup window
+var popup = document.getElementById("mypopup");
+var btn = document.getElementById("disease-submit");
+var span = document.getElementsByClassName("close-btn")[0];
+
+btn.onclick = function() {
+  popup.style.display = "block";
+}
+span.onclick = function() {
+  popup.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == popup) {
+    popup.style.display = "none";
+  }
+}
+
+
+    
+    fetch('http://localhost:5000/BreastCancer',{
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+        //"Access-Control-Allow-Origin": "*"
+      },
+      body: JSON.stringify(submittingValue),
+    }).then(res => res.text())         
+    .then(text => console.log(text)
+    ).catch((err) => {
+      console.log(err);
+    });
+
+    fetch('http://localhost:5000/BreastCancer',{
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
+      },
+    }).then(res => res.text())         
+    .then(text => setOutput(text)
+    ).catch((err) => {
+      console.log(err);
+    });  
+  }
+
+
+
+
+
+
+
+
+  
     return (
         <>
         <br />
         <br />
         <br />
         <div class="form">
-        <form>
-  <label>
-  ID:
-    <input type="text" name="Pregnancies" />
-  </label>
-  <br />
-  <label>
-  DIAGNOSIS:
-    <input type="text" name="Glucose" />
-  </label>
-  <br />
+        <form onSubmit={handleSubmit}>
+  
   <label>
   RADIUS_MEAN:
-    <input type="text" name="SkinThickness" />
-  </label>
-  <br />
-  <label>
-  TEXTURE_MEAN:
-    <input type="text" name="Insulin" />
+    <input type="number" name="RadiusMean" value={enteredRadiusMean} onChange={RadiusMeanChangeHandler}/>
   </label>
   <br />
   <label>
   PERIMETER_MEAN:
-    <input type="text" name="BMI" />
+    <input type="number" name="PerimeterMean" value={enteredPerimeterMean} onChange={PerimeterMeanChangeHandler}/>
   </label>
   <br />
   <label>
   AREA_MEAN:
-    <input type="text" name="DiabetesPedigreeFunction" />
-  </label>
-  <br />
-  <label>
-  SMOOTHNESS_MEAN:
-    <input type="text" name="Age" />
-  </label>
-  <br />
-  <label>
-  COMPACTNESS_MEAN:
-    <input type="text" name="Age" />
-  </label>
-  <br />
-  <label>
-  CONCAVITY_MEAN:
-    <input type="text" name="Age" />
+    <input type="number" name="AreaMean" value={enteredAreaMean} onChange={AreaMeanChangeHandler}/>
   </label>
   <br />
   <label>
   CONCAVE POINTS_MEAN:
-    <input type="text" name="Age" />
-  </label>
-  <br />
-  <label>
-  SYMMETRY_MEAN:
-    <input type="text" name="Age" />
-  </label>
-  <br />
-  <label>
-  FRACTAL_DIMENSION_MEAN:
-    <input type="text" name="Age" />
-  </label>
-  <br />
-  <label>
-  RADIUS_SE:
-    <input type="text" name="Age" />
-  </label>
-  <br />
-  <label>
-  TEXTURE_SE:
-    <input type="text" name="Age" />
-  </label>
-  <br />
-  <label>
-  PERIMETER_SE:
-    <input type="text" name="Age" />
+    <input type="number" name="ConcavePointsMean" value={enteredConcavePointsMean} onChange={ConcavePointsMeanChangeHandler}/>
   </label>
   <br />
   <label>
   AREA_SE:
-    <input type="text" name="Age" />
-  </label>
-  <br />
-  <label>
-  SMOOTHNESS_SE:
-    <input type="text" name="Age" />
-  </label>
-  <br />
-  <label>
-  COMPACTNESS_SE:
-    <input type="text" name="Age" />
-  </label>
-  <br />
-  <label>
-  CONCAVITY_SE:
-    <input type="text" name="Age" />
-  </label>
-  <br />
-  <label>
-  CONCAVE POINTS_SE:
-    <input type="text" name="Age" />
-  </label>
-  <br />
-  <label>
-  SYMMETRY_SE:
-    <input type="text" name="Age" />
-  </label>
-  <br />
-  <label>
-  FRACTAL_DIMENSION_SE:
-    <input type="text" name="Age" />
+    <input type="number" name="AreaSe" value={enteredAreaSe} onChange={AreaSeChangeHandler}/>
   </label>
   <br />
   <label>
   RADIUS_WORST:
-    <input type="text" name="Age" />
-  </label>
-  <br />
-  <label>
-  TEXTURE_WORST:
-    <input type="text" name="Age" />
+    <input type="number" name="RadiusWorst" value={enteredRadiusWorst} onChange={RadiusWorstChangeHandler}/>
   </label>
   <br />
   <label>
   PERIMETER_WORST:
-    <input type="text" name="Age" />
+    <input type="number" name="PerimeterWorst" value={enteredPerimeterWorst} onChange={PerimeterWorstChangeHandler}/>
   </label>
   <br />
   <label>
   AREA_WORST:
-    <input type="text" name="Age" />
-  </label>
-  <br />
-  <label>
-  SMOOTHNESS_WORST:
-    <input type="text" name="Age" />
-  </label>
-  <br />
-  <label>
-  COMPACTNESS_WORST:
-    <input type="text" name="Age" />
+    <input type="number" name="AreaWorst" value={enteredAreaWorst} onChange={AreaWorstChangeHandler}/>
   </label>
   <br />
   <label>
   CONCAVITY_WORST:
-    <input type="text" name="Age" />
+    <input type="number" name="ConcavityWorst" value={enteredConcavityWorst} onChange={ConcavityWorstChangeHandler}/>
   </label>
   <br />
   <label>
   CONCAVE POINTS_WORST:
-    <input type="text" name="Age" />
+    <input type="number" name="ConcavePointsWorst" value={enteredConcavePointsWorst} onChange={ConcavePointsWorstChangeHandler}/>
   </label>
   <br />
-  <label>
-  SYMMETRY_WORST:
-    <input type="text" name="Age" />
-  </label>
-  <br />
-  <label>
-  FRACTAL_DIMENSION_WORST:
-    <input type="text" name="Age" />
-  </label>
-  <br />
+
+  <input id="disease-submit" type="submit" value="Submit" />
+      {/* <p>{output}</p> */}
+
+      <div id="mypopup" class="popup-container">
+
+
+        <div class="popup-content">
+          <span class="close-btn">&times;</span>
+          <p>There is <strong> {output} </strong> chance of you having this disease.</p>
+        </div>
+
+      </div>
  
-  <input type="submit" value="Submit" />
 </form>
 </div>
         </>
