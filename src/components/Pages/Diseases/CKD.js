@@ -164,7 +164,10 @@ setEnteredPe('');
 setEnteredAne('');
 
 
-
+function displayPopUp() {
+  const popup = document.getElementById('mypopup');
+  popup.style.display = "block";
+}
 
 
     
@@ -188,7 +191,7 @@ setEnteredAne('');
         'Accept': 'application/json'
       },
     }).then(res => res.text())         
-    .then(text => setOutput(text)
+    .then(text => setOutput(text), displayPopUp()
     ).catch((err) => {
       console.log(err);
     });
@@ -197,11 +200,7 @@ setEnteredAne('');
 
 // for result popup window
 
-function displayPopUp(e) {
-  e.preventDefault();
-  const popup = document.getElementById('mypopup');
-  popup.style.display = "block";
-}
+
 function closePopUp(e) {
   e.preventDefault();
   const popup = document.getElementById('mypopup');
@@ -347,7 +346,7 @@ window.onclick = function(event) {
   <br />
   
  
-  <input id="disease-submit" onClick={displayPopUp} type="submit" value="Submit" />
+  <input id="disease-submit" type="submit" value="Submit" />
       {/* <p>{output}</p> */}
 
       <div id="mypopup" class="popup-container">

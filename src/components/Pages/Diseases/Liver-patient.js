@@ -84,7 +84,10 @@ const ambuminandglobulinratioChangeHandler = (event) => {
     setEnteredTotalporteins('');
     setEnteredPhospotase('');
 
-
+    function displayPopUp() {
+      const popup = document.getElementById('mypopup');
+      popup.style.display = "block";
+    }
     
     fetch('http://localhost:5000/liver',{
       method: 'POST',
@@ -106,7 +109,7 @@ const ambuminandglobulinratioChangeHandler = (event) => {
         'Accept': 'application/json'
       },
     }).then(res => res.text())         
-    .then(text => setOutput(text)
+    .then(text => setOutput(text), displayPopUp()
     ).catch((err) => {
       console.log(err);
     });
@@ -115,11 +118,7 @@ const ambuminandglobulinratioChangeHandler = (event) => {
 
   // for result popup window
 
-  function displayPopUp(e) {
-    e.preventDefault();
-    const popup = document.getElementById('mypopup');
-    popup.style.display = "block";
-  }
+  
   function closePopUp(e) {
     e.preventDefault();
     const popup = document.getElementById('mypopup');
@@ -195,7 +194,7 @@ const ambuminandglobulinratioChangeHandler = (event) => {
   
  
  
-  <input id="disease-submit" onClick={displayPopUp} type="submit" value="Submit" />
+  <input id="disease-submit" type="submit" value="Submit" />
       {/* <p>{output}</p> */}
 
       <div id="mypopup" class="popup-container">
