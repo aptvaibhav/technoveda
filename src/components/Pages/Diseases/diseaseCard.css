@@ -1,0 +1,109 @@
+.do-heading {
+    width: 100%;
+    text-align: center;
+    margin-top: 4rem;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    font-size: 2.5em;
+}
+
+.do-cards {
+    width: 90%;
+    height: auto;
+    margin: auto;
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: center; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(30%, 1fr));
+}
+
+.do-card {
+    display: flex;
+    justify-self: center;
+    width: 300px;
+    height: max-content;
+    flex-direction: column;
+    margin: 3rem 3rem;
+    padding: 1rem 1rem;
+    border: 3px solid #f6f7fa;
+    border-radius: 15px;
+    background-color: #fff;
+    transition: all 200ms ease;
+    color: #333;
+    text-decoration: none;
+}
+.do-card:hover {
+    box-shadow: 0 6px 31px -2px rgba(0, 0, 0, 0.1);
+    transform: translate(0px, -10px);
+}
+.do-card .do-img {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    max-width: 100%;
+}
+.do-card .do-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    text-decoration: none;
+}
+.do-card .do-detail {
+    color: #666;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: left;
+}
+
+.do-info .details {
+    display: block;
+    font-size: 1rem;
+    text-decoration: none;
+    color: #000;
+    border: 2px solid #333;
+    cursor: pointer;
+    border-radius: 6px;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin-top: 10px;
+    transition: all 0.1s ease;
+}
+.details a {
+    color: #000;
+}
+.do-info .details:hover {
+    color: #F6F7FA;
+    background-color: #333;
+}
+
+@media screen and (max-width: 1140px) {
+    .do-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .do-card {
+        width: 30%;
+        margin: 1.5rem 1.5rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .do-card {
+        width: auto;
+    }
+    .do-heading {
+        font-size: 1.5em;
+    }   
+    .do-card .do-name {
+        font-size: 1rem;
+    }
+    .do-card .do-detail {
+        font-size: 1rem;
+    }
+}

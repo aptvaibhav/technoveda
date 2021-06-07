@@ -1,17 +1,67 @@
 import React from "react";
-import logo from "../../../assets/blood.png";
-export default function Diseases() {
+import './diseaseCard.css';
+import stockImg from "../../../assets/stock.jpg";
+import CommonCard from './CommonCard';
+
+
+const Diseases = () => {
+
     return (
-<div>
-<br />
-<div class="card" style={{width: "18rem;"}}>
-<img src={logo} class="card-img-top" alt="logo" height="40" width="100" style={{marginTop:"10px"}}/>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="/" class="btn btn-primary">Go somewhere</a>
-  </div>
-  </div>
-</div>
+        <>
+
+        <section class="past-web" id="web">
+         
+        <div class="do-cards">
+        
+            <CommonCard
+                imgsrc={stockImg}
+                diseaseName="Breast Cancer"
+                diseaseDetail="Disease Detail Here"
+                btn="fill form"
+                link="/BreastCancer"
+            />
+            <CommonCard
+                imgsrc={stockImg}
+                diseaseName="Cardiovascular"
+                diseaseDetial="Disease Detail Here"
+                btn="fill form"
+                link="/Cardiovascular"
+            />
+            <CommonCard
+                imgsrc={stockImg}
+                diseaseName="Chronic Kedney Disease"
+                diseaseDetial="Disease Detail Here"
+                btn="fill form"
+                link="CKD"
+            />
+            <CommonCard
+                imgsrc={stockImg}
+                diseaseName="Diabetes"
+                diseaseDetial="Disease Detail Here"
+                btn="fill form"
+                link="/Diabetes"
+            />
+            <CommonCard
+                imgsrc={stockImg}
+                diseaseName="Heart Disease"
+                diseaseDetial="Disease Detail Here"
+                btn="fill form"
+                link="heartDisease"
+            />
+            <CommonCard
+                imgsrc={stockImg}
+                diseaseName="Liver Patient"
+                diseaseDetial="Disease Detail Here"
+                btn="fill form"
+                link="LiverDisease"
+            />
+
+        </div>
+        </section>
+
+
+        </>
     );
-}
+};
+
+export default Diseases;

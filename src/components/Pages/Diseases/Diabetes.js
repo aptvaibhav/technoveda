@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import './disease-details.css';
+
 
 export default function Diabetes() {
   
@@ -11,6 +13,8 @@ export default function Diabetes() {
   const [enteredBmi,setEnteredBmi] = useState('');
   const [enteredDiabetesPedigree,setEnteredDiabetesPedigree] = useState('');
   const [enteredAge,setEnteredAge] = useState('');
+  const [output,setOutput] = useState('');
+
 
   const pregnanicesChangeHandler = (event) => {
       setEnteredPregnancies(event.target.value);
@@ -37,12 +41,10 @@ export default function Diabetes() {
   const ageChangeHandler = (event) => {
     setEnteredAge(event.target.value);
   }; 
-  var output={};
+ 
+
   function handleSubmit(e) {
     e.preventDefault();
-    // const data = { name: value };
-    // console.log('submit');
-    // console.log(value);/</form><form>
     const submittingValue = {
      'Pregnancies' : enteredPregnanices,
      'Glucose' : enteredGlucose,
@@ -53,7 +55,7 @@ export default function Diabetes() {
      'DiabetesPedigreeFunction' : enteredDiabetesPedigree,
      'Age' : enteredAge
     };
-    //console.log(enteredPregnanices,enteredGlucose,enteredBloodPressure);
+   
     setEnteredBloodPressure('');
     setEnteredGlucose('');
     setEnteredPregnancies('');
@@ -62,21 +64,36 @@ export default function Diabetes() {
     setEnteredDiabetesPedigree('');
     setEnteredInsulin('');
     setEnteredSkinThickness('');
-    // fetch('http://127.0.0.1:5000/predict').then(response =>{
-    //  return response.json();
-    // }).then((pred)=>{
-    //     output = pred;
-    //     console.log(output);
-    // });
-    fetch('http://127.0.0.1:5000/predict',{
+    
+    fetch('http://localhost:5000/diabetes',{
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
+        //"Access-Control-Allow-Origin": "*"
       },
       body: JSON.stringify(submittingValue),
-    }).then(res => res.json())
-      .then(res => console.log(res));
+    }).then(res => res.text())         
+    .then(text => console.log(text)
+    ).catch((err) => {
+      console.log(err);
+    });
+
+    fetch('http://localhost:5000/diabetes',{
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
+      },
+    }).then(res => res.text())         
+    .then(text => setOutput(text)
+    ).catch((err) => {
+      console.log(err);
+    });
+
+
+     
   }
+  
 
 
     return (
@@ -84,6 +101,7 @@ export default function Diabetes() {
         <br />
         <br />
         <br />
+        <div class="form">
         <form onSubmit={handleSubmit}>
         
   <label>
@@ -128,8 +146,16 @@ export default function Diabetes() {
   <br />
  
   <input type="submit" value="Submit" />
+      <p>{output}</p>
+  
+  
 </form>
-        </>
-    );
+
+
+</div>
+
+ </>
+       
+);
 
 }
