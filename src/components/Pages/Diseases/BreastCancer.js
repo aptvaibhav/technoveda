@@ -88,6 +88,7 @@ export default function BreastCancer() {
 
 
 
+<<<<<<< HEAD
 
 // for result popup window
 var popup = document.getElementById("mypopup");
@@ -107,6 +108,8 @@ window.onclick = function(event) {
 }
 
 
+=======
+>>>>>>> 16c75a29882736c504c45108a7bd1ba4db9cb043
     
     fetch('http://localhost:5000/breast',{
       method: 'POST',
@@ -136,7 +139,24 @@ window.onclick = function(event) {
 
 
 
+// for result popup window
 
+  function displayPopUp(e) {
+    e.preventDefault();
+    const popup = document.getElementById('mypopup');
+    popup.style.display = "block";
+  }
+  function closePopUp(e) {
+    e.preventDefault();
+    const popup = document.getElementById('mypopup');
+    popup.style.display = "none";
+  }
+  window.onclick = function(event) {
+    const popup = document.getElementById('mypopup');
+    if (event.target === popup) {
+      popup.style.display = "none";
+    }
+  }
 
 
 
@@ -201,14 +221,14 @@ window.onclick = function(event) {
   </label>
   <br />
 
-  <input id="disease-submit" type="submit" value="Submit" />
+  <input id="disease-submit" onClick={displayPopUp} type="submit" value="Submit" />
       {/* <p>{output}</p> */}
 
       <div id="mypopup" class="popup-container">
 
 
         <div class="popup-content">
-          <span class="close-btn">&times;</span>
+          <span onClick={closePopUp} class="close-btn">&times;</span>
           <p>There is <strong> {output} </strong> chance of you having this disease.</p>
         </div>
 
