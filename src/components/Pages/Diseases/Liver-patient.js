@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import './disease-details.css';
+import './popup.css';
 
 
 export default function LiverPatient() {
@@ -82,6 +83,28 @@ const ambuminandglobulinratioChangeHandler = (event) => {
     setEnteredGender('');
     setEnteredTotalporteins('');
     setEnteredPhospotase('');
+
+
+    // for result popup window
+    var popup = document.getElementById("mypopup");
+    var btn = document.getElementById("disease-submit");
+    var span = document.getElementsByClassName("close-btn")[0];
+
+    btn.onclick = function() {
+      popup.style.display = "block";
+    }
+    span.onclick = function() {
+      popup.style.display = "none";
+    }
+    window.onclick = function(event) {
+      if (event.target === popup) {
+        popup.style.display = "none";
+      }
+    }
+
+
+
+
     
     fetch('http://localhost:5000/liver',{
       method: 'POST',
@@ -174,10 +197,21 @@ const ambuminandglobulinratioChangeHandler = (event) => {
   
  
  
-  <input type="submit" value="Submit" />
+  <input id="disease-submit" type="submit" value="Submit" />
+      {/* <p>{output}</p> */}
+
+      <div id="mypopup" class="popup-container">
+
+
+        <div class="popup-content">
+          <span class="close-btn">&times;</span>
+          <p>There is <strong> {output} </strong> chance of you having this disease.</p>
+        </div>
+
+      </div>
 
 </form>
- <p>{output}</p>
+
 </div>
  </div>
     );

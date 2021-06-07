@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import './disease-details.css';
+import './popup.css';
 
 
 export default function Diabetes() {
@@ -64,6 +65,26 @@ export default function Diabetes() {
     setEnteredDiabetesPedigree('');
     setEnteredInsulin('');
     setEnteredSkinThickness('');
+
+
+// for result popup window
+var popup = document.getElementById("mypopup");
+var btn = document.getElementById("disease-submit");
+var span = document.getElementsByClassName("close-btn")[0];
+
+btn.onclick = function() {
+  popup.style.display = "block";
+}
+span.onclick = function() {
+  popup.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target === popup) {
+    popup.style.display = "none";
+  }
+}
+
+
     
     fetch('http://localhost:5000/diabetes',{
       method: 'POST',
@@ -89,9 +110,6 @@ export default function Diabetes() {
     ).catch((err) => {
       console.log(err);
     });
-
-
-     
   }
   
 
@@ -145,9 +163,22 @@ export default function Diabetes() {
   </label>
   <br />
  
-  <input type="submit" value="Submit" />
-      <p>{output}</p>
-  
+ 
+  <input id="disease-submit" type="submit" value="Submit" />
+      {/* <p>{output}</p> */}
+
+      <div id="mypopup" class="popup-container">
+
+
+        <div class="popup-content">
+          <span class="close-btn">&times;</span>
+          <p>There is <strong> {output} </strong> chance of you having this disease.</p>
+        </div>
+
+      </div>
+
+      
+      
   
 </form>
 
@@ -155,7 +186,10 @@ export default function Diabetes() {
 </div>
 
  </>
-       
+
+
 );
+
+
 
 }
