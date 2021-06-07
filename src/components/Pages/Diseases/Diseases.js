@@ -29,7 +29,7 @@ const Diseases = () => {
             />
             <CommonCard
                 imgsrc={stockImg}
-                diseaseName="Chronic Kedney Disease"
+                diseaseName="Chronic Kidney Disease"
                 diseaseDetial="Disease Detail Here"
                 btn="fill form"
                 link="CKD"

@@ -1,149 +1,380 @@
-import React from "react";
+import React, {useState} from "react";
 import './disease-details.css';
-
-												
+import './popup.css';
 
 
 export default function CKD() {
+
+
+const [enteredId,setEnteredId] = useState('');
+const [enteredAge,setEnteredAge] = useState('');
+const [enteredBp,setEnteredBp] = useState('');
+const [enteredSg,setEnteredSg] = useState('');
+const [enteredAl,setEnteredAl] = useState('');
+const [enteredSu,setEnteredSu] = useState('');
+const [enteredRbc,setEnteredRbc] = useState('');
+const [enteredPc,setEnteredPc] = useState('');
+const [enteredPcc,setEnteredPcc] = useState('');
+const [enteredBa,setEnteredBa] = useState('');
+const [enteredBgr,setEnteredBgr] = useState('');
+const [enteredBu,setEnteredBu] = useState('');
+const [enteredSc,setEnteredSc] = useState('');
+const [enteredSod,setEnteredSod] = useState('');
+const [enteredPot,setEnteredPot] = useState('');
+const [enteredHemo,setEnteredHemo] = useState('');
+const [enteredPcv,setEnteredPcv] = useState('');
+const [enteredWc,setEnteredWc] = useState('');
+const [enteredRc,setEnteredRc] = useState('');
+const [enteredHtn,setEnteredHtn] = useState('');
+const [enteredDm,setEnteredDm] = useState('');
+const [enteredCad,setEnteredCad] = useState('');
+const [enteredAppet,setEnteredAppet] = useState('');
+const [enteredPe,setEnteredPe] = useState('');
+const [enteredAne,setEnteredAne] = useState('');
+const [enteredClassification,setEnteredClassification] = useState('');
+const [output,setOutput] = useState('');
+
+
+const IdChangeHandler = (event) => {
+  setEnteredId(event.target.value);
+}; 
+const AgeChangeHandler = (event) => {
+  setEnteredAge(event.target.value);
+}; 
+const BpChangeHandler = (event) => {
+  setEnteredBp(event.target.value);
+}; 
+const SgChangeHandler = (event) => {
+  setEnteredSg(event.target.value);
+}; 
+const AlChangeHandler = (event) => {
+ setEnteredAl(event.target.value);
+}; 
+const SuChangeHandler = (event) => {
+  setEnteredSu(event.target.value);
+}; 
+const RbcChangeHandler = (event) => {
+  setEnteredRbc(event.target.value);
+}; 
+const PcChangeHandler = (event) => {
+  setEnteredPc(event.target.value);
+}; 
+const PccChangeHandler = (event) => {
+  setEnteredPcc(event.target.value);
+}; 
+const BaChangeHandler = (event) => {
+ setEnteredBa(event.target.value);
+}; 
+const BgrChangeHandler = (event) => {
+  setEnteredBgr(event.target.value);
+}; 
+const BuChangeHandler = (event) => {
+  setEnteredBu(event.target.value);
+}; 
+const ScChangeHandler = (event) => {
+  setEnteredSc(event.target.value);
+}; 
+const SodChangeHandler = (event) => {
+  setEnteredSod(event.target.value);
+}; 
+const PotChangeHandler = (event) => {
+  setEnteredPot(event.target.value);
+}; 
+const HemoChangeHandler = (event) => {
+  setEnteredHemo(event.target.value);
+}; 
+const PcvChangeHandler = (event) => {
+  setEnteredPcv(event.target.value);
+}; 
+const WcChangeHandler = (event) => {
+  setEnteredWc(event.target.value);
+}; 
+const RcChangeHandler = (event) => {
+  setEnteredRc(event.target.value);
+}; 
+const HtnChangeHandler = (event) => {
+  setEnteredHtn(event.target.value);
+}; 
+const DmChangeHandler = (event) => {
+  setEnteredDm(event.target.value);
+}; 
+const CadChangeHandler = (event) => {
+  setEnteredCad(event.target.value);
+}; 
+const AppetChangeHandler = (event) => {
+  setEnteredAppet(event.target.value);
+}; 
+const PeChangeHandler = (event) => {
+  setEnteredPe(event.target.value);
+}; 
+const AneChangeHandler = (event) => {
+  setEnteredAne(event.target.value);
+}; 
+const ClassificationChangeHandler = (event) => {
+  setEnteredClassification(event.target.value);
+}; 
+
+
+function handleSubmit(e) {
+e.preventDefault();
+const submittingValue = {
+  'Id' : enteredId,
+  'Age' : enteredAge,
+  'Bp' : enteredBp,
+  'Sg' : enteredSg,
+  'Al' : enteredAl,
+  'Su' : enteredSu,
+  'Rbc' : enteredRbc,
+  'Pc' : enteredPc,
+  'Pcc' : enteredPcc,
+  'Ba' : enteredBa,
+  'Bgr' : enteredBgr,
+  'Bu' : enteredBu,
+  'Sc' : enteredSc,
+  'Sod' : enteredSod,
+  'Pot' : enteredPot,
+  'Hemo' : enteredHemo,
+  'Pcv' : enteredPcv,
+  'Wc' : enteredWc,
+  'Rc' : enteredRc,
+  'Htn' : enteredHtn,
+  'Dm' : enteredDm,
+  'Cad' : enteredCad,
+  'Appet' : enteredAppet,
+  'Pe' : enteredPe,
+  'Ane' : enteredAne,
+  'Classification' : enteredClassification
+};
+
+setEnteredId('');
+setEnteredAge('');
+setEnteredBp('');
+setEnteredSg('');
+setEnteredAl('');
+setEnteredSu('');
+setEnteredRbc('');
+setEnteredPc('');
+setEnteredPcc('');
+setEnteredBa('');
+setEnteredBgr('');
+setEnteredBu('');
+setEnteredSc('');
+setEnteredSod('');
+setEnteredPot('');
+setEnteredHemo('');
+setEnteredPcv('');
+setEnteredWc('');
+setEnteredRc('');
+setEnteredHtn('');
+setEnteredDm('');
+setEnteredCad('');
+setEnteredAppet('');
+setEnteredPe('');
+setEnteredAne('');
+setEnteredClassification('');
+
+
+
+// for result popup window
+var popup = document.getElementById("mypopup");
+var btn = document.getElementById("disease-submit");
+var span = document.getElementsByClassName("close-btn")[0];
+
+btn.onclick = function() {
+  popup.style.display = "block";
+}
+span.onclick = function() {
+  popup.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == popup) {
+    popup.style.display = "none";
+  }
+}
+
+
+    
+    fetch('http://localhost:5000/diabetes',{
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+        //"Access-Control-Allow-Origin": "*"
+      },
+      body: JSON.stringify(submittingValue),
+    }).then(res => res.text())         
+    .then(text => console.log(text)
+    ).catch((err) => {
+      console.log(err);
+    });
+
+    fetch('http://localhost:5000/diabetes',{
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
+      },
+    }).then(res => res.text())         
+    .then(text => setOutput(text)
+    ).catch((err) => {
+      console.log(err);
+    });
+
+
+     
+  }
+
+
+
     return (
         <>
         <br />
         <br />
         <br />
         <div class="form">
-        <form>
+        <form onSubmit={handleSubmit}>
   <label>
   ID:
-    <input type="text" name="Pregnancies" />
+    <input type="number" name="Id" value={enteredId} onChange={IdChangeHandler} />
   </label>
   <br />
   <label>
   AGE:
-    <input type="text" name="Glucose" />
+    <input type="number" name="Age" value={enteredAge} onChange={AgeChangeHandler} />
   </label>
   <br />
   <label>
   BP:
-    <input type="text" name="SkinThickness" />
+    <input type="number" name="Bp" value={enteredBp} onChange={BpChangeHandler} />
   </label>
   <br />
   <label>
   SG:
-    <input type="text" name="Insulin" />
+    <input type="number" name="Sg" value={enteredSg} onChange={SgChangeHandler} />
   </label>
   <br />
   <label>
   AL:
-    <input type="text" name="BMI" />
+    <input type="number" name="Al" value={enteredAl} onChange={AlChangeHandler} />
   </label>
   <br />
   <label>
   SU:
-    <input type="text" name="DiabetesPedigreeFunction" />
+    <input type="number" name="Su" value={enteredSu} onChange={SuChangeHandler} />
   </label>
   <br />
   <label>
   RBC:
-    <input type="text" name="Age" />
+    <input type="text" name="Rbc" value={enteredRbc} onChange={RbcChangeHandler} />
   </label>
   <br />
   <label>
   PC:
-    <input type="text" name="Age" />
+    <input type="text" name="Pc" value={enteredPc} onChange={PcChangeHandler} />
   </label>
   <br />
   <label>
   PCC:
-    <input type="text" name="Age" />
+    <input type="text" name="Pcc" value={enteredPcc} onChange={PccChangeHandler} />
   </label>
   <br />
   <label>
   BA:
-    <input type="text" name="Age" />
+    <input type="text" name="Ba" value={enteredBa} onChange={BaChangeHandler} />
   </label>
   <br />
   <label>
   BGR:
-    <input type="text" name="Age" />
+    <input type="number" name="Bgr" value={enteredBgr} onChange={BgrChangeHandler} />
   </label>
   <br />
   <label>
   BU:
-    <input type="text" name="Age" />
+    <input type="number" name="Bu" value={enteredBu} onChange={BuChangeHandler} />
   </label>
   <br />
   <label>
   SC:
-    <input type="text" name="Age" />
+    <input type="number" name="Sc" value={enteredSc} onChange={ScChangeHandler} />
   </label>
   <br />
   <label>
   SOD:
-    <input type="text" name="Age" />
+    <input type="number" name="Sod" value={enteredSod} onChange={SodChangeHandler} />
   </label>
   <br />
   <label>
     POT:
-    <input type="text" name="Age" />
+    <input type="number" name="Pot" value={enteredPot} onChange={PotChangeHandler} />
   </label>
   <br />
   <label>
   HEMO:
-    <input type="text" name="Age" />
+    <input type="number" name="Hemo" value={enteredHemo} onChange={HemoChangeHandler} />
   </label>
   <br />
   <label>
   PCV:
-    <input type="text" name="Age" />
+    <input type="number" name="Pcv" value={enteredPcv} onChange={PcvChangeHandler}  />
   </label>
   <br />
   <label>
   WC:
-    <input type="text" name="Age" />
+    <input type="number" name="Wc" value={enteredWc} onChange={WcChangeHandler} />
   </label>
   <br />
   <label>
   RC:
-    <input type="text" name="Age" />
+    <input type="number" name="Rc" value={enteredRc} onChange={RcChangeHandler} />
   </label>
   <br />
   <label>
   HTN:
-    <input type="text" name="Age" />
+    <input type="text" name="Htn" value={enteredHtn} onChange={HtnChangeHandler} />
   </label>
   <br />
   <label>
   DM:
-    <input type="text" name="Age" />
+    <input type="text" name="Dm" value={enteredDm} onChange={DmChangeHandler} />
   </label>
   <br />
   <label>
   CAD:
-    <input type="text" name="Age" />
+    <input type="text" name="Cad" value={enteredCad} onChange={CadChangeHandler} />
   </label>
   <br />
   <label>
   APPET:
-    <input type="text" name="Age" />
+    <input type="text" name="Appet" value={enteredAppet} onChange={AppetChangeHandler} />
   </label>
   <br />
   <label>
   PE:
-    <input type="text" name="Age" />
+    <input type="text" name="Pe" value={enteredPe} onChange={PeChangeHandler} />
   </label>
   <br />
   <label>
   ANE:
-    <input type="text" name="Age" />
+    <input type="text" name="Ane" value={enteredAne} onChange={AneChangeHandler} />
   </label>
   <br />
   <label>
   CLASSIFICATION:
-    <input type="text" name="Age" />
+    <input type="text" name="Classification" value={enteredClassification} onChange={ClassificationChangeHandler} />
   </label>
   <br />
  
-  <input type="submit" value="Submit" />
+  <input id="disease-submit" type="submit" value="Submit" />
+      {/* <p>{output}</p> */}
+
+      <div id="mypopup" class="popup-container">
+
+
+        <div class="popup-content">
+          <span class="close-btn">&times;</span>
+          <p>There is <strong> {output} </strong> chance of you having this disease.</p>
+        </div>
+
+      </div>
 </form>
 </div>
         </>

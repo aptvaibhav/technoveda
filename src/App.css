@@ -1,5 +1,4 @@
 
-
 .title {
   color: #c50f0f;
 }
@@ -147,7 +146,7 @@ ul {
   display: grid;
   -ms-grid-columns: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
-  height: 90vh;
+  /* height: 90vh; */
 }
 .SignUp h2 {
   color: #c50f0f;
@@ -266,6 +265,17 @@ select:focus {
   height: 400px;
   width: 400px;
 }
+
+
+/* For footer overlapping */
+footer{
+  position: relative;
+}
+
+
+
+
+
 .site-footer {
   background-color: #c50f0f;
   padding: 45px 0 20px;
