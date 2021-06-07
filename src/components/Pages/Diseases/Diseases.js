@@ -1,6 +1,11 @@
 import React from "react";
 import './diseaseCard.css';
-import stockImg from "../../../assets/stock.jpg";
+import breast from "../../../assets/breastcancer.jpeg";
+import liver from "../../../assets/liver.jpg";
+import heart from "../../../assets/heart.jpeg";
+import kidney from "../../../assets/kidney.jpeg";
+import diabetes from "../../../assets/diabetes.jpg";
+import cardio from "../../../assets/cardio.jpeg";
 import CommonCard from './CommonCard';
 
 
@@ -8,50 +13,52 @@ const Diseases = () => {
 
     return (
         <>
-
+        <br />
+        <br />
+        <br />
         <section class="past-web" id="web">
          
         <div class="do-cards">
         
             <CommonCard
-                imgsrc={stockImg}
+                imgsrc={breast}
                 diseaseName="Breast Cancer"
-                diseaseDetail="Disease Detail Here"
+                
                 btn="fill form"
                 link="/BreastCancer"
             />
             <CommonCard
-                imgsrc={stockImg}
+                imgsrc={cardio}
                 diseaseName="Cardiovascular"
-                diseaseDetial="Disease Detail Here"
+                
                 btn="fill form"
                 link="/Cardiovascular"
             />
             <CommonCard
-                imgsrc={stockImg}
-                diseaseName="Chronic Kedney Disease"
-                diseaseDetial="Disease Detail Here"
+                imgsrc={kidney}
+                diseaseName="Chronic Kidney Disease"
+                
                 btn="fill form"
                 link="CKD"
             />
             <CommonCard
-                imgsrc={stockImg}
+                imgsrc={diabetes}
                 diseaseName="Diabetes"
-                diseaseDetial="Disease Detail Here"
+                
                 btn="fill form"
                 link="/Diabetes"
             />
             <CommonCard
-                imgsrc={stockImg}
+                imgsrc={heart}
                 diseaseName="Heart Disease"
-                diseaseDetial="Disease Detail Here"
+              
                 btn="fill form"
                 link="heartDisease"
             />
             <CommonCard
-                imgsrc={stockImg}
+                imgsrc={liver}
                 diseaseName="Liver Patient"
-                diseaseDetial="Disease Detail Here"
+              
                 btn="fill form"
                 link="LiverDisease"
             />
