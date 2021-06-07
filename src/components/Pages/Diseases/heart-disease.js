@@ -111,14 +111,14 @@ export default function HeartDisease() {
       popup.style.display = "none";
     }
     window.onclick = function(event) {
-      if (event.target == popup) {
+      if (event.target === popup) {
         popup.style.display = "none";
       }
     }
     
     
         
-        fetch('http://localhost:5000/diabetes',{
+        fetch('http://localhost:5000/heart',{
           method: 'POST',
           headers: {
             'Content-type': 'application/json',
@@ -131,7 +131,7 @@ export default function HeartDisease() {
           console.log(err);
         });
     
-        fetch('http://localhost:5000/diabetes',{
+        fetch('http://localhost:5000/heart',{
           method: 'GET',
           headers: {
             'Content-type': 'application/json',
@@ -160,7 +160,7 @@ export default function HeartDisease() {
   <br />
   <label>
   SEX:
-    <input type="number" name="Sex" value={enteredSex} onChange={SexChangeHandler} />
+    <input type="text" name="Sex" value={enteredSex} onChange={SexChangeHandler} />
   </label>
   <br />
   <label>

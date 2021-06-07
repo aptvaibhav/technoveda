@@ -101,14 +101,14 @@ span.onclick = function() {
   popup.style.display = "none";
 }
 window.onclick = function(event) {
-  if (event.target == popup) {
+  if (event.target === popup) {
     popup.style.display = "none";
   }
 }
 
 
     
-    fetch('http://localhost:5000/BreastCancer',{
+    fetch('http://localhost:5000/breast',{
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -121,7 +121,7 @@ window.onclick = function(event) {
       console.log(err);
     });
 
-    fetch('http://localhost:5000/BreastCancer',{
+    fetch('http://localhost:5000/breast',{
       method: 'GET',
       headers: {
         'Content-type': 'application/json',

@@ -101,14 +101,14 @@ span.onclick = function() {
   popup.style.display = "none";
 }
 window.onclick = function(event) {
-  if (event.target == popup) {
+  if (event.target === popup) {
     popup.style.display = "none";
   }
 }
 
 
     
-    fetch('http://localhost:5000/diabetes',{
+    fetch('http://localhost:5000/cardio',{
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -121,7 +121,7 @@ window.onclick = function(event) {
       console.log(err);
     });
 
-    fetch('http://localhost:5000/diabetes',{
+    fetch('http://localhost:5000/cardio',{
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
@@ -155,7 +155,7 @@ window.onclick = function(event) {
   <br />
   <label>
   GENDER:
-    <input type="number" name="Gender" value={enteredGender} onChange={GenderChangeHandler} />
+    <input type="text" name="Gender" value={enteredGender} onChange={GenderChangeHandler} />
   </label>
   <br />
   <label>
