@@ -16,7 +16,7 @@ const Diseases = () => {
             <CommonCard
                 imgsrc={stockImg}
                 diseaseName="Breast Cancer"
-                diseaseDetail="Disease Detail Here"
+                // diseaseDetail="Disease Detail Here"
                 btn="fill form"
                 link="/BreastCancer"
             />

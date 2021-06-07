@@ -5,7 +5,7 @@ const CommonCard = (props) => {
     return (
       
         <>
-
+        <NavLink to={props.link || '/'} class="details"></NavLink>
         <div class="do-card">
             <img class="do-img" src={props.imgsrc} alt=""/>
             <div class="do-info">

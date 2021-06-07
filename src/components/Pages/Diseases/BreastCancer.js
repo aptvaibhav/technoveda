@@ -88,27 +88,8 @@ export default function BreastCancer() {
 
 
 
-
-// for result popup window
-var popup = document.getElementById("mypopup");
-var btn = document.getElementById("disease-submit");
-var span = document.getElementsByClassName("close-btn")[0];
-
-btn.onclick = function() {
-  popup.style.display = "block";
-}
-span.onclick = function() {
-  popup.style.display = "none";
-}
-window.onclick = function(event) {
-  if (event.target === popup) {
-    popup.style.display = "none";
-  }
-}
-
-
     
-    fetch('http://localhost:5000/BreastCancer',{
+    fetch('http://localhost:5000/breast',{
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -121,7 +102,7 @@ window.onclick = function(event) {
       console.log(err);
     });
 
-    fetch('http://localhost:5000/BreastCancer',{
+    fetch('http://localhost:5000/breast',{
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
@@ -136,7 +117,24 @@ window.onclick = function(event) {
 
 
 
+// for result popup window
 
+  function displayPopUp(e) {
+    e.preventDefault();
+    const popup = document.getElementById('mypopup');
+    popup.style.display = "block";
+  }
+  function closePopUp(e) {
+    e.preventDefault();
+    const popup = document.getElementById('mypopup');
+    popup.style.display = "none";
+  }
+  window.onclick = function(event) {
+    const popup = document.getElementById('mypopup');
+    if (event.target === popup) {
+      popup.style.display = "none";
+    }
+  }
 
 
 
@@ -201,14 +199,14 @@ window.onclick = function(event) {
   </label>
   <br />
 
-  <input id="disease-submit" type="submit" value="Submit" />
+  <input id="disease-submit" onClick={displayPopUp} type="submit" value="Submit" />
       {/* <p>{output}</p> */}
 
       <div id="mypopup" class="popup-container">
 
 
         <div class="popup-content">
-          <span class="close-btn">&times;</span>
+          <span onClick={closePopUp} class="close-btn">&times;</span>
           <p>There is <strong> {output} </strong> chance of you having this disease.</p>
         </div>
 
