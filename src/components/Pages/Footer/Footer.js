@@ -11,17 +11,19 @@ export default function Footer() {
               <p class="text-justify">
                 TechnoVeda is a step towards bridging the gap between health and fitness.
                 We are trying to provide disease diagnosing and doctors consultation facilities to 
-                everyone for free. Peace!!!{" "}
+                everyone for free. Peace!!!
+                {" "} 
               </p>
+              
             </div>
 
             <div class="col-xs-6 col-md-3">
               <h6>Tech Stack</h6>
               <ul class="footer-links">
-                <li>GraphQL</li>
-                <li>MongoDB</li>
-                <li>Express.js</li>
-                <li>Node.js</li>
+                <li>Flask</li>
+                <li>Python</li>
+                <li>Javascript</li>
+                <li>Machine Learning</li>
                 <li>React.js</li>
                 <li>Bootstrap</li>
               </ul>
@@ -31,12 +33,20 @@ export default function Footer() {
               <h6>About Us</h6>
               <ul class="footer-links">
                 <li>
-                 
-                    Group of coding Enthusiast 
-                  
+                 <a href="https://www.linkedin.com/in/vaibhav-tyagi-4060781a0/">
+                   Vaibhav Tyagi
+                   </a>
+                </li>
+
+                <li>
+                <a href="https://www.linkedin.com/in/gaurav-singh-b90369191/">
+                  Gaurav Singh
+                  </a>
                 </li>
                 <li>
-                Trying to Help Needy
+                <a href="https://www.linkedin.com/in/sumit-rohilla-49a2851a0/">
+                  Sumit Rohilla
+                  </a>
                 </li>
                 
               </ul>
