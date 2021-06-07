@@ -5,7 +5,6 @@ import './popup.css';
 
 export default function Cardiovascular() {
 
-  const [enteredId,setEnteredId] = useState('');
   const [enteredAge,setEnteredAge] = useState('');
   const [enteredGender,setEnteredGender] = useState('');
   const [enteredHeight,setEnteredHeight] = useState('');
@@ -17,13 +16,9 @@ export default function Cardiovascular() {
   const [enteredSmoke,setEnteredSmoke] = useState('');
   const [enteredAlco,setEnteredAlco] = useState('');
   const [enteredActive,setEnteredActive] = useState('');
-  const [enteredCardio,setEnteredCardio] = useState('');
+  const [enteredBMI,setEnteredBMI] = useState('');
   const [output,setOutput] = useState('');
 
-
-  const IdChangeHandler = (event) => {
-    setEnteredId(event.target.value);
-  }; 
 
   const AgeChangeHandler = (event) => {
     setEnteredAge(event.target.value);
@@ -58,30 +53,28 @@ export default function Cardiovascular() {
   const ActiveChangeHandler = (event) => {
     setEnteredActive(event.target.value);
   }; 
-  const CardioChangeHandler = (event) => {
-    setEnteredCardio(event.target.value);
+  const BMIChangeHandler = (event) => {
+    setEnteredBMI(event.target.value);
   }; 
 
 
   function handleSubmit(e) {
     e.preventDefault();
     const submittingValue = {
-     'Id' : enteredId,
-     'Age' : enteredAge,
-     'Gender' : enteredGender,
-     'Height' :enteredHeight,
-     'Weight' : enteredWeight,
-     'Ap_hi' : enteredAp_hi,
-     'Ap_lo' : enteredAp_lo,
-     'Cholestrol' : enteredCholestrol,
-     'Gluc' : enteredGluc,
-     'Smoke' : enteredSmoke,
-     'Alco' : enteredAlco,
-     'Active' : enteredActive,
-     'Cardio' : enteredCardio
+     'age' : enteredAge,
+     'gender' : enteredGender,
+     'height' :enteredHeight,
+     'weight' : enteredWeight,
+     'ap_hi' : enteredAp_hi,
+     'ap_lo' : enteredAp_lo,
+     'cholestrol' : enteredCholestrol,
+     'gluc' : enteredGluc,
+     'smoke' : enteredSmoke,
+     'alco' : enteredAlco,
+     'active' : enteredActive,
+     'bmi' : enteredBMI
     };
    
-    setEnteredId('');
     setEnteredAge('');
     setEnteredGender('');
     setEnteredHeight('');
@@ -93,7 +86,7 @@ export default function Cardiovascular() {
     setEnteredSmoke('');
     setEnteredAlco('');
     setEnteredActive('');
-    setEnteredCardio('');
+    setEnteredBMI('');
 
 
     // for result popup window
@@ -154,11 +147,7 @@ window.onclick = function(event) {
         <br />
         <div class="form">
         <form onSubmit={handleSubmit}>
-  <label>
-  ID:
-    <input type="number" name="Id" value={enteredId} onChange={IdChangeHandler} />
-  </label>
-  <br />
+
   <label>
   AGE:
     <input type="number" name="Age" value={enteredAge} onChange={AgeChangeHandler} />
@@ -215,8 +204,8 @@ window.onclick = function(event) {
   </label>
   <br />
   <label>
-  CARDIO:
-    <input type="number" name="Cardio" value={enteredCardio} onChange={CardioChangeHandler} />
+  BMI:
+    <input type="number" name="BMI" value={enteredBMI} onChange={BMIChangeHandler} />
   </label>
   <br />
  

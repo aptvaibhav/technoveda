@@ -17,9 +17,7 @@ export default function HeartDisease() {
   const [enteredExang,setEnteredExang] = useState('');
   const [enteredOldpeak,setEnteredOldpeak] = useState('');
   const [enteredSlope,setEnteredSlope] = useState('');
-  const [enteredCa,setEnteredCa] = useState('');
-  const [enteredThal,setEnteredThal] = useState('');
-  const [enteredTarget,setEnteredTarget] = useState('');
+  const [enteredCathal,setEnteredCathal] = useState('');
   const [output,setOutput] = useState('');
 
 
@@ -56,34 +54,27 @@ export default function HeartDisease() {
     const SlopeChangeHandler = (event) => {
     setEnteredSlope(event.target.value);
       };
-    const CaChangeHandler = (event) => {
-    setEnteredCa(event.target.value);
+    const CathalChangeHandler = (event) => {
+    setEnteredCathal(event.target.value);
       };
-    const ThalChangeHandler = (event) => {
-    setEnteredThal(event.target.value);
-      };
-    const TargetChangeHandler = (event) => {
-    setEnteredTarget(event.target.value);
-      };
+    
 
 
       function handleSubmit(e) {
         e.preventDefault();
         const submittingValue = {
-          'Age' : enteredAge,
-          'Sex' : enteredSex,
-          'Cp' : enteredCp,
-          'Trestbps' : enteredTrestbps,
-          'Chol' : enteredChol,
-          'Fbs' : enteredFbs,
-          'Restecg' : enteredRestecg,
-          'Thalach' : enteredThalach,
-          'Exang' : enteredExang,
-          'Oldpeak' : enteredOldpeak,
-          'Slope' : enteredSlope,
-          'Ca' : enteredCa,
-          'Thal' : enteredThal,
-          'Target' : enteredTarget
+          'age' : enteredAge,
+          'sex' : enteredSex,
+          'cp' : enteredCp,
+          'trestbps' : enteredTrestbps,
+          'chol' : enteredChol,
+          'fbs' : enteredFbs,
+          'restecg' : enteredRestecg,
+          'thalach' : enteredThalach,
+          'exang' : enteredExang,
+          'oldpeak' : enteredOldpeak,
+          'slope' : enteredSlope,
+          'cathal' : enteredCathal
         };
        
         setEnteredAge('');
@@ -97,9 +88,8 @@ export default function HeartDisease() {
         setEnteredExang('');
         setEnteredOldpeak('');
         setEnteredSlope('');
-        setEnteredCa('');
-        setEnteredThal('');
-        setEnteredTarget('');
+        setEnteredCathal('');
+        
 
 
         
@@ -220,19 +210,10 @@ export default function HeartDisease() {
   <br />
   <label>
   CA:
-    <input type="number" name="Ca" value={enteredCa} onChange={CaChangeHandler} />
+    <input type="number" name="Cathal" value={enteredCathal} onChange={CathalChangeHandler} />
   </label>
   <br />
-  <label>
-  THAL:
-    <input type="number" name="Thal" value={enteredThal} onChange={ThalChangeHandler} />
-  </label>
-  <br />
-  <label>
-  TARGET:
-    <input type="number" name="Target"  value={enteredTarget} onChange={TargetChangeHandler} />
-  </label>
-  <br />
+  
  
   <input id="disease-submit" type="submit" value="Submit" />
       {/* <p>{output}</p> */}

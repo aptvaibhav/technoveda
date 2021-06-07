@@ -6,7 +6,6 @@ import './popup.css';
 export default function CKD() {
 
 
-const [enteredId,setEnteredId] = useState('');
 const [enteredAge,setEnteredAge] = useState('');
 const [enteredBp,setEnteredBp] = useState('');
 const [enteredSg,setEnteredSg] = useState('');
@@ -31,13 +30,9 @@ const [enteredCad,setEnteredCad] = useState('');
 const [enteredAppet,setEnteredAppet] = useState('');
 const [enteredPe,setEnteredPe] = useState('');
 const [enteredAne,setEnteredAne] = useState('');
-const [enteredClassification,setEnteredClassification] = useState('');
 const [output,setOutput] = useState('');
 
 
-const IdChangeHandler = (event) => {
-  setEnteredId(event.target.value);
-}; 
 const AgeChangeHandler = (event) => {
   setEnteredAge(event.target.value);
 }; 
@@ -110,43 +105,39 @@ const PeChangeHandler = (event) => {
 const AneChangeHandler = (event) => {
   setEnteredAne(event.target.value);
 }; 
-const ClassificationChangeHandler = (event) => {
-  setEnteredClassification(event.target.value);
-}; 
+ 
 
 
 function handleSubmit(e) {
 e.preventDefault();
 const submittingValue = {
-  'Id' : enteredId,
-  'Age' : enteredAge,
-  'Bp' : enteredBp,
-  'Sg' : enteredSg,
-  'Al' : enteredAl,
-  'Su' : enteredSu,
-  'Rbc' : enteredRbc,
-  'Pc' : enteredPc,
-  'Pcc' : enteredPcc,
-  'Ba' : enteredBa,
-  'Bgr' : enteredBgr,
-  'Bu' : enteredBu,
-  'Sc' : enteredSc,
-  'Sod' : enteredSod,
-  'Pot' : enteredPot,
-  'Hemo' : enteredHemo,
-  'Pcv' : enteredPcv,
-  'Wc' : enteredWc,
-  'Rc' : enteredRc,
-  'Htn' : enteredHtn,
-  'Dm' : enteredDm,
-  'Cad' : enteredCad,
-  'Appet' : enteredAppet,
-  'Pe' : enteredPe,
-  'Ane' : enteredAne,
-  'Classification' : enteredClassification
+  'age' : enteredAge,
+  'bp' : enteredBp,
+  'sg' : enteredSg,
+  'al' : enteredAl,
+  'su' : enteredSu,
+  'rbc' : enteredRbc,
+  'pc' : enteredPc,
+  'pcc' : enteredPcc,
+  'ba' : enteredBa,
+  'bgr' : enteredBgr,
+  'bu' : enteredBu,
+  'sc' : enteredSc,
+  'sod' : enteredSod,
+  'pot' : enteredPot,
+  'hemo' : enteredHemo,
+  'pcv' : enteredPcv,
+  'wc' : enteredWc,
+  'rc' : enteredRc,
+  'htn' : enteredHtn,
+  'dm' : enteredDm,
+  'cad' : enteredCad,
+  'appet' : enteredAppet,
+  'pe' : enteredPe,
+  'ane' : enteredAne
 };
 
-setEnteredId('');
+
 setEnteredAge('');
 setEnteredBp('');
 setEnteredSg('');
@@ -171,7 +162,7 @@ setEnteredCad('');
 setEnteredAppet('');
 setEnteredPe('');
 setEnteredAne('');
-setEnteredClassification('');
+
 
 
 
@@ -232,11 +223,7 @@ window.onclick = function(event) {
         <br />
         <div class="form">
         <form onSubmit={handleSubmit}>
-  <label>
-  ID:
-    <input type="number" name="Id" value={enteredId} onChange={IdChangeHandler} />
-  </label>
-  <br />
+
   <label>
   AGE:
     <input type="number" name="Age" value={enteredAge} onChange={AgeChangeHandler} />
@@ -357,11 +344,7 @@ window.onclick = function(event) {
     <input type="text" name="Ane" value={enteredAne} onChange={AneChangeHandler} />
   </label>
   <br />
-  <label>
-  CLASSIFICATION:
-    <input type="text" name="Classification" value={enteredClassification} onChange={ClassificationChangeHandler} />
-  </label>
-  <br />
+  
  
   <input id="disease-submit" type="submit" value="Submit" />
       {/* <p>{output}</p> */}
