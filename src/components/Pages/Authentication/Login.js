@@ -1,6 +1,6 @@
 
 import React from "react";
-import donation2 from "../../../assets/donation2.jpg";
+import donation2 from "../../../assets/login.png";
 import { Link } from "react-router-dom";
 export default function Login() {
 return (
@@ -19,6 +19,7 @@ return (
         <img className="art" src={donation2} alt="Donation" style={{height:"300px"}} />
       </div>
       <div className="main-signup">
+      <br />
       <br />
         <h1>Login</h1>
         <div className="signup-form">

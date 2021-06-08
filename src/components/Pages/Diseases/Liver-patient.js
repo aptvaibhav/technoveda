@@ -85,11 +85,12 @@ const ambuminandglobulinratioChangeHandler = (event) => {
     setEnteredPhospotase('');
 
     function displayPopUp() {
+      
       const popup = document.getElementById('mypopup');
       popup.style.display = "block";
     }
     
-    fetch('http://localhost:5000/liver',{
+    fetch('https://techno-vedha.herokuapp.com/liver',{
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -102,14 +103,15 @@ const ambuminandglobulinratioChangeHandler = (event) => {
       console.log(err);
     });
 
-    fetch('http://localhost:5000/liver',{
+    fetch('https://techno-vedha.herokuapp.com/liver',{
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json'
       },
     }).then(res => res.text())         
-    .then(text => setOutput(text), displayPopUp()
+    .then(text => setOutput(text),
+    displayPopUp()
     ).catch((err) => {
       console.log(err);
     });
@@ -118,7 +120,7 @@ const ambuminandglobulinratioChangeHandler = (event) => {
 
   // for result popup window
 
-  
+
   function closePopUp(e) {
     e.preventDefault();
     const popup = document.getElementById('mypopup');

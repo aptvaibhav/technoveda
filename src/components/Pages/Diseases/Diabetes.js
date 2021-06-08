@@ -68,12 +68,12 @@ export default function Diabetes() {
 
 
     function displayPopUp() {
+     
       const popup = document.getElementById('mypopup');
       popup.style.display = "block";
     }
-
     
-    fetch('http://localhost:5000/diabetes',{
+    fetch('https://techno-vedha.herokuapp.com/diabetes',{
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -86,14 +86,15 @@ export default function Diabetes() {
       console.log(err);
     });
 
-    fetch('http://localhost:5000/diabetes',{
+    fetch('https://techno-vedha.herokuapp.com/diabetes',{
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json'
       },
     }).then(res => res.text())         
-    .then(text => setOutput(text), displayPopUp()
+    .then(text => setOutput(text),
+    displayPopUp()
     ).catch((err) => {
       console.log(err);
     });
@@ -167,7 +168,7 @@ window.onclick = function(event) {
   </label>
   <br />
  
-  <input id="disease-submit"  type="submit" value="Submit" />
+  <input id="disease-submit" type="submit" value="Submit" />
       {/* <p>{output}</p> */}
 
       <div id="mypopup" class="popup-container">

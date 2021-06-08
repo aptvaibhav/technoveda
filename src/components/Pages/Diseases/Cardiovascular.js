@@ -88,15 +88,15 @@ export default function Cardiovascular() {
     setEnteredActive('');
     setEnteredBMI('');
 
-
     function displayPopUp() {
+     
       const popup = document.getElementById('mypopup');
       popup.style.display = "block";
     }
 
 
     
-    fetch('http://localhost:5000/cardio',{
+    fetch('https://techno-vedha.herokuapp.com/cardio',{
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -109,14 +109,15 @@ export default function Cardiovascular() {
       console.log(err);
     });
 
-    fetch('http://localhost:5000/cardio',{
+    fetch('https://techno-vedha.herokuapp.com/cardio',{
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json'
       },
     }).then(res => res.text())         
-    .then(text => setOutput(text), displayPopUp()
+    .then(text => setOutput(text),
+    displayPopUp()
     ).catch((err) => {
       console.log(err);
     });
@@ -212,7 +213,7 @@ window.onclick = function(event) {
   </label>
   <br />
  
-  <input id="disease-submit" type="submit" value="Submit" />
+  <input id="disease-submit"  type="submit" value="Submit" />
       {/* <p>{output}</p> */}
 
       <div id="mypopup" class="popup-container">

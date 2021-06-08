@@ -165,13 +165,11 @@ setEnteredAne('');
 
 
 function displayPopUp() {
+  
   const popup = document.getElementById('mypopup');
   popup.style.display = "block";
 }
-
-
-    
-    fetch('http://localhost:5000/kidney',{
+    fetch('https://techno-vedha.herokuapp.com/kidney',{
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -184,14 +182,15 @@ function displayPopUp() {
       console.log(err);
     });
 
-    fetch('http://localhost:5000/kidney',{
+    fetch('https://techno-vedha.herokuapp.com/kidney',{
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json'
       },
     }).then(res => res.text())         
-    .then(text => setOutput(text), displayPopUp()
+    .then(text => setOutput(text),
+    displayPopUp()
     ).catch((err) => {
       console.log(err);
     });
