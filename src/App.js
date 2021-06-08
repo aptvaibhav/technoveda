@@ -15,7 +15,7 @@ import Loading from "../src/components/Pages/Loading/Loading";
 import Navbar from "../src/components/Pages/Navbar/Navbar";
 import Login from "../src/components/Pages/Authentication/Login";
 import Signup from "../src/components/Pages/Authentication/Signup";
-import Test from "../src/components/Pages/Diseases/Test";
+
 
 import "./App.css";
 export default function App() {
@@ -38,7 +38,7 @@ export default function App() {
     <Route exact path="/Diseases" component={Diseases} />
     
     
-    <Route exact path ="/Test" component={Test} />
+   
   
     <Route exact path="/Diabetes" component={Diabetes} />
     <Route exact path="/BreastCancer" component={BreastCancer} />

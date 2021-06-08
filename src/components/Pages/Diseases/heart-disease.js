@@ -90,36 +90,12 @@ export default function HeartDisease() {
         setEnteredSlope('');
         setEnteredCathal('');
         
-<<<<<<< HEAD
-
-
-        
-
-
-
-
     
-    
-    // for result popup window
-    var popup = document.getElementById("mypopup");
-    var btn = document.getElementById("disease-submit");
-    var span = document.getElementsByClassName("close-btn")[0];
-    
-    btn.onclick = function() {
-      popup.style.display = "block";
-    }
-    span.onclick = function() {
-      popup.style.display = "none";
-    }
-    window.onclick = function(event) {
-      if (event.target === popup) {
-        popup.style.display = "none";
-      }
-    }
-=======
->>>>>>> 16c75a29882736c504c45108a7bd1ba4db9cb043
-    
-    
+        function displayPopUp() {
+
+          const popup = document.getElementById('mypopup');
+          popup.style.display = "block";
+        }
         
         fetch('http://localhost:5000/heart',{
           method: 'POST',
@@ -141,7 +117,8 @@ export default function HeartDisease() {
             'Accept': 'application/json'
           },
         }).then(res => res.text())         
-        .then(text => setOutput(text)
+        .then(text => setOutput(text),
+        displayPopUp()
         ).catch((err) => {
           console.log(err);
         });
@@ -149,11 +126,7 @@ export default function HeartDisease() {
 
 // for result popup window
 
-function displayPopUp(e) {
-  e.preventDefault();
-  const popup = document.getElementById('mypopup');
-  popup.style.display = "block";
-}
+
 function closePopUp(e) {
   e.preventDefault();
   const popup = document.getElementById('mypopup');
@@ -239,7 +212,7 @@ window.onclick = function(event) {
   <br />
   
  
-  <input id="disease-submit" onClick={displayPopUp} type="submit" value="Submit" />
+  <input id="disease-submit"  type="submit" value="Submit" />
       {/* <p>{output}</p> */}
 
       <div id="mypopup" class="popup-container">
