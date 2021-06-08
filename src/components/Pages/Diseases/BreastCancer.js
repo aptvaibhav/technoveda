@@ -60,6 +60,45 @@ export default function BreastCancer() {
 
 
   function handleSubmit(e) {
+
+    if(enteredAreaWorst > 50 || enteredAreaWorst < 15) {
+      alert("Enter AreaWorst between range 15 - 50");
+      return;
+    }
+    if(enteredRadiusWorst > 10 || enteredRadiusWorst < 2) {
+      alert("Enter RadiusWorst between range 2 - 10");
+      return;
+    }
+    if(enteredPerimeterMean > 15 || enteredPerimeterMean < 5) {
+      alert("Enter PerimeterMean between range 5 - 15");
+      return;
+    }
+    if(enteredConcavePointsWorst > 1 || enteredConcavePointsWorst < 0) {
+      alert("Enter ConcavePointsWorst between range 0 - 1");
+      return;
+    }
+    if(enteredPerimeterWorst > 15 || enteredPerimeterWorst < 5) {
+      alert("Enter PerimeterWorst between range 5 - 15");
+      return;
+    }
+    if(enteredAreaMean > 40 || enteredAreaMean < 10) {
+      alert("Enter AreaMean between range 10 - 40");
+      return;
+    }
+    if(enteredConcavePointsMean > 1 || enteredConcavePointsMean < 0) {
+      alert("Enter ConcavePointsMean between range 0 - 1");
+      return;
+    }
+    if(enteredAreaSe > 15 || enteredAreaSe < 1) {
+      alert("Enter AreaSe between range 0 - 15");
+      return;
+    }
+    if(enteredRadiusMean > 5 ||enteredRadiusMean < 1) {
+      alert("Enter RadiusMean between range 1 - 5");
+      return;
+    }
+   
+
     e.preventDefault();
     const submittingValue = {
      'radius-mean' : enteredRadiusMean,

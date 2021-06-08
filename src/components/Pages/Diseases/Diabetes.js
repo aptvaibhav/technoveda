@@ -45,6 +45,40 @@ export default function Diabetes() {
  
 
   function handleSubmit(e) {
+
+    if(enteredPregnanices > 10 || enteredPregnanices < 0) {
+      alert("Enter Pregnanicies between range 0 - 10");
+      return;
+    }
+    if(enteredGlucose > 90 || enteredGlucose < 0) {
+      alert("Enter Glucose between range 0 - 90");
+      return;
+    }
+    if(enteredBloodPressure > 140 || enteredBloodPressure < 60) {
+      alert("Enter BloodPressure between range 60 - 140");
+      return;
+    }
+    if(enteredSkinThickness > 100 || enteredSkinThickness < 1) {
+      alert("Enter SkinThickness between range 1 - 100");
+      return;
+    }
+    if(enteredInsulin> 900 || enteredInsulin < 0) {
+      alert("Enter Insulin between range 0 - 900");
+      return;
+    }
+    if(enteredBmi > 30 || enteredBmi < 0) {
+      alert("Enter BMI between range 0 - 10");
+      return;
+    }
+    if(enteredDiabetesPedigree > 3 || enteredDiabetesPedigree < 0.05) {
+      alert("Enter DiabetesPedigree between range 0.05 - 3");
+      return;
+    }
+    if(enteredAge > 100 || enteredAge < 1) {
+      alert("Enter Age between range 1 - 100");
+      return;
+    }
+
     e.preventDefault();
     const submittingValue = {
      'Pregnancies' : enteredPregnanices,

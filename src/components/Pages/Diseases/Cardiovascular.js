@@ -59,6 +59,56 @@ export default function Cardiovascular() {
 
 
   function handleSubmit(e) {
+
+    if(enteredAge > 100 || enteredAge < 1) {
+      alert("Enter Age between range 1 - 100");
+      return;
+    }
+    if(enteredGender !== 'm' || enteredGender !== 'f' || enteredGender !== 'M' || enteredGender !== 'F') {  
+      alert("Enter Gender Male : m, M Female: f, F");
+      return;
+    }
+    if(enteredHeight > 250 || enteredHeight < 30) {
+      alert("Enter Height between range 30 - 250");
+      return;
+    }
+    if(enteredWeight > 200 || enteredWeight < 1) {
+      alert("Enter Weight between range 1 - 5");
+      return;
+    }
+    if(enteredAp_hi > 250 || enteredAp_hi < 130) {
+      alert("Enter SYSTOLIC BP between range 130 - 250");
+      return;
+    }
+    if(enteredAp_lo > 200 || enteredAp_lo < 70) {
+      alert("Enter DIASTOLIC BP between range 70 - 200");
+      return;
+    }
+    if(enteredCholestrol > 3 || enteredCholestrol < 1) {
+      alert("Enter Cholestrol for Normal: 1, aboveNormal: 2, Worst: 3");
+      return;
+    }
+    if(enteredGluc > 3 || enteredGluc < 1) {
+      alert("Enter Glucose for Normal: 1, aboveNormal: 2, Worst: 3");
+      return;
+    }
+    if(enteredSmoke !== 0 || enteredSmoke !== 1) {
+      alert("If you Smoke Enter 1 else Enter 0");
+      return;
+    }
+    if(enteredAlco !== 1 || enteredAlco !== 0) {
+      alert("If you drink Alcohol Enter 1 else Enter 0");
+      return;
+    }
+    if(enteredActive > 5 || enteredActive < 1) {
+      alert("If you do Excerise Enter 1 else Enter 0");
+      return;
+    }
+    if(enteredBMI > 35 || enteredBMI    < 3) {
+      alert("Enter BMI between range 3 - 35");
+      return;
+    }
+
     e.preventDefault();
     const submittingValue = {
      'age' : enteredAge,
@@ -87,6 +137,10 @@ export default function Cardiovascular() {
     setEnteredAlco('');
     setEnteredActive('');
     setEnteredBMI('');
+
+
+
+   
 
     function displayPopUp() {
      
@@ -173,12 +227,12 @@ window.onclick = function(event) {
   </label>
   <br />
   <label>
-  AP_HI:
+  SYSTOLIC BP:
     <input type="number" name="Ap_hi" value={enteredAp_hi} onChange={Ap_hiChangeHandler} />
   </label>
   <br />
   <label>
-  AP_LO:
+  DIASTOLIC BP:
     <input type="number" name="Ap_lo" value={enteredAp_lo} onChange={Ap_loChangeHandler} />
   </label>
   <br />
@@ -188,7 +242,7 @@ window.onclick = function(event) {
   </label>
   <br />
   <label>
-  GLUC:
+  GLUCOSE:
     <input type="number" name="Gluc" value={enteredGluc} onChange={GlucChangeHandler} />
   </label>
   <br />
@@ -198,7 +252,7 @@ window.onclick = function(event) {
   </label>
   <br />
   <label>
-  ALCO:
+  ALCOHOL:
     <input type="number" name="Alco" value={enteredAlco} onChange={AlcoChangeHandler} />
   </label>
   <br />

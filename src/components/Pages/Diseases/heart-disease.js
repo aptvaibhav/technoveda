@@ -61,6 +61,56 @@ export default function HeartDisease() {
 
 
       function handleSubmit(e) {
+
+        if(enteredAge > 100 || enteredAge    < 1) {
+          alert("Enter Age between range 1 - 100");
+          return;
+        }
+        if(enteredSex !== 'm' || enteredSex !== 'f' || enteredSex !== 'M' || enteredSex !== 'F') {
+          alert("Enter Gender Male : m, M Female: f, F");
+          return;
+        }
+        if(enteredCp > 4 || enteredCp    < 1) {
+          alert("Enter Chest Pain Type between range 1 - 4");
+          return;
+        }
+        if(enteredTrestbps > 6 || enteredTrestbps    < 2) {
+          alert("Enter Trestbps between range 2 - 6");
+          return;
+        }
+        if(enteredChol > 35 || enteredChol    < 3) {
+          alert("Enter Cholestrol between range 3 - 35");
+          return;
+        }
+        if(enteredFbs !== 1 || enteredFbs !== 0) {
+          alert("If you HaveFasting blood Sugar Enter 1 else Enter 0");
+          return;
+        }
+        if(enteredRestecg > 2 || enteredRestecg < 0) {
+          alert("Enter Resting Electrocardiograghic Result: 0 ,1, 2");
+          return;
+        }
+        if(enteredThalach > 210 || enteredThalach    < 80) {
+          alert("Enter Maximum Heartrate Achieved between range 80 - 210");
+          return;
+        }
+        if(enteredExang !== 1 || enteredExang !== 0) {
+          alert("If you Exercise Enter 1 else Enter 0");
+          return;
+        }
+        if(enteredOldpeak > 3 || enteredOldpeak    < 0) {
+          alert("Enter Old Peak between range 3 - 35");
+          return;
+        }
+        if(enteredSlope > 3 || enteredSlope    < 0) {
+          alert("Enter Slope of Peak Exercise between range 0 - 3");
+          return;
+        }
+        if(enteredCathal > 3 || enteredCathal    < 0) {
+          alert("Enter Major Vessel between range 0 - 3");
+          return;
+        }
+
         e.preventDefault();
         const submittingValue = {
           'age' : enteredAge,
@@ -156,12 +206,12 @@ window.onclick = function(event) {
   </label>
   <br />
   <label>
-  SEX:
+  GENDER:
     <input type="text" name="Sex" value={enteredSex} onChange={SexChangeHandler} />
   </label>
   <br />
   <label>
-  CP:
+  Chest Pain Type:
     <input type="number" name="Cp" value={enteredCp} onChange={CpChangeHandler} />
   </label>
   <br />
