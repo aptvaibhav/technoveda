@@ -90,33 +90,12 @@ export default function HeartDisease() {
         setEnteredSlope('');
         setEnteredCathal('');
         
-
-
-        
-
-
-
-
     
-    
-    // for result popup window
-    var popup = document.getElementById("mypopup");
-    var btn = document.getElementById("disease-submit");
-    var span = document.getElementsByClassName("close-btn")[0];
-    
-    btn.onclick = function() {
-      popup.style.display = "block";
-    }
-    span.onclick = function() {
-      popup.style.display = "none";
-    }
-    window.onclick = function(event) {
-      if (event.target === popup) {
-        popup.style.display = "none";
-      }
-    }
-    
-    
+        function displayPopUp() {
+
+          const popup = document.getElementById('mypopup');
+          popup.style.display = "block";
+        }
         
         fetch('http://localhost:5000/heart',{
           method: 'POST',
@@ -138,11 +117,29 @@ export default function HeartDisease() {
             'Accept': 'application/json'
           },
         }).then(res => res.text())         
-        .then(text => setOutput(text)
+        .then(text => setOutput(text),
+        displayPopUp()
         ).catch((err) => {
           console.log(err);
         });
       }
+
+// for result popup window
+
+
+function closePopUp(e) {
+  e.preventDefault();
+  const popup = document.getElementById('mypopup');
+  popup.style.display = "none";
+}
+window.onclick = function(event) {
+  const popup = document.getElementById('mypopup');
+  if (event.target === popup) {
+    popup.style.display = "none";
+  }
+}
+
+
 
 
 
@@ -215,14 +212,14 @@ export default function HeartDisease() {
   <br />
   
  
-  <input id="disease-submit" type="submit" value="Submit" />
+  <input id="disease-submit"  type="submit" value="Submit" />
       {/* <p>{output}</p> */}
 
       <div id="mypopup" class="popup-container">
 
 
         <div class="popup-content">
-          <span class="close-btn">&times;</span>
+          <span onClick={closePopUp} class="close-btn">&times;</span>
           <p>There is <strong> {output} </strong> chance of you having this disease.</p>
         </div>
 
