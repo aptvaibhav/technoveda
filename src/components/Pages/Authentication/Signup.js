@@ -1,5 +1,5 @@
 import React from "react";
-import donation from "../../../assets/donation.jpg";
+import donation from "../../../assets/signup.png";
 import { Link } from "react-router-dom";
 
 export default function Signup() {
@@ -9,6 +9,7 @@ return (
         <div className="left-bar">
           <div className="top">
             <div>
+
               <div className="logo">
                 <h2>TechnoVeda</h2>
               </div>
@@ -18,6 +19,8 @@ return (
           <img className="art" src={donation} alt="Donation" style={{height:"250px"}}/>
         </div>
         <div className="main-signup">
+        <br />
+        <br />
           <h1>Sign Up</h1>
           <div className="signup-form">
             <label htmlFor="email">Email</label>
