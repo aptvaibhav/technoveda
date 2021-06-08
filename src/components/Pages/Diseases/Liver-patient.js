@@ -87,7 +87,7 @@ const ambuminandglobulinratioChangeHandler = (event) => {
       alert("Enter Gender Male : m, M Female: f, F");
       return;
     }
-    if(enteredTotalporteins > 10 || enteredTotalporteins    < 1) {
+    if(enteredTotalprotiens > 10 || enteredTotalprotiens    < 1) {
       alert("Enter Total porteins between range 1 - 10");
       return;
     }
