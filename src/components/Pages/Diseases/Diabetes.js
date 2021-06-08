@@ -73,7 +73,7 @@ export default function Diabetes() {
       popup.style.display = "block";
     }
     
-    fetch('http://localhost:5000/diabetes',{
+    fetch('https://techno-vedha.herokuapp.com/diabetes',{
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -86,7 +86,7 @@ export default function Diabetes() {
       console.log(err);
     });
 
-    fetch('http://localhost:5000/diabetes',{
+    fetch('https://techno-vedha.herokuapp.com/diabetes',{
       method: 'GET',
       headers: {
         'Content-type': 'application/json',

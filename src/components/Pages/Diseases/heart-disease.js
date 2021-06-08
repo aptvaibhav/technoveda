@@ -97,7 +97,7 @@ export default function HeartDisease() {
           popup.style.display = "block";
         }
         
-        fetch('http://localhost:5000/heart',{
+        fetch('https://techno-vedha.herokuapp.com/heart',{
           method: 'POST',
           headers: {
             'Content-type': 'application/json',
@@ -110,7 +110,7 @@ export default function HeartDisease() {
           console.log(err);
         });
     
-        fetch('http://localhost:5000/heart',{
+        fetch('https://techno-vedha.herokuapp.com/heart',{
           method: 'GET',
           headers: {
             'Content-type': 'application/json',
