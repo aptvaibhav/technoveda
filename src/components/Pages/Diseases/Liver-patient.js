@@ -54,20 +54,62 @@ const ambuminandglobulinratioChangeHandler = (event) => {
 
 
   function handleSubmit(e) {
+
+    if(enteredAge > 100 || enteredAge    < 1) {
+      alert("Enter Age between range 1 - 100");
+      return;
+    }
+    if(enteredAlamineaminotransferase > 2000 || enteredAlamineaminotransferase    < 10) {
+      alert("Enter Alamine aminotransferase between range 10 - 2000");
+      return;
+    }
+    if(enteredAlbumin > 10 || enteredAlbumin    < 0.1) {
+      alert("Enter Albumin between range 0.1 - 10");
+      return;
+    }
+    if(enteredAmbuminandglobulinratio > 5 || enteredAmbuminandglobulinratio    < 0.1) {
+      alert("Enter Ambumin and globulin ratio between range 0.1 - 5");
+      return;
+    }
+    if(enteredAspartateaminotransferase > 5000 || enteredAspartateaminotransferase    < 10) {
+      alert("Enter Aspartate aminotransferase between range 1 0- 5000");
+      return;
+    }
+    if(enteredBilirubin > 75 || enteredBilirubin    < 0.1) {
+      alert("Enter Total Bilirubin between range 0.1 - 75");
+      return;
+    }
+    if(enteredDirectbilirubin > 25 || enteredDirectbilirubin    < 0.1) {
+      alert("Enter Directbilirubin between range 0.1 - 25");
+      return;
+    }
+    if(enteredGender !== 'm' || enteredGender !== 'f' || enteredGender !== 'M' || enteredGender !== 'F') {  
+      alert("Enter Gender Male : m, M Female: f, F");
+      return;
+    }
+    if(enteredTotalprotiens > 10 || enteredTotalprotiens    < 1) {
+      alert("Enter Total porteins between range 1 - 10");
+      return;
+    }
+    if(enteredPhospotase > 250 || enteredPhospotase    < 60) {
+      alert("Enter Alkaline Phosphotase between range 60 - 2500");
+      return;
+    }
+
     e.preventDefault();
     const submittingValue = {
-   
- 'Age' :    enteredAge,
- "Alamine_Aminotransferase":  enteredAlamineaminotransferase,
- "Albumin": enteredAlbumin,
-  "Albumin_and_Globulin_Ratio": enteredAmbuminandglobulinratio,
-  "Aspartate_Aminotransferase": enteredAspartateaminotransferase,
-  "Total_Bilirubin": enteredBilirubin,
-  "Direct_Bilirubin": enteredDirectbilirubin,
 
- 'Gender': enteredGender,
- "Total_Protiens": enteredTotalprotiens,
-  "Alkaline_Phosphotase": enteredPhospotase
+    'Age' :    enteredAge,
+    "Alamine_Aminotransferase":  enteredAlamineaminotransferase,
+    "Albumin": enteredAlbumin,
+    "Albumin_and_Globulin_Ratio": enteredAmbuminandglobulinratio,
+    "Aspartate_Aminotransferase": enteredAspartateaminotransferase,
+    "Total_Bilirubin": enteredBilirubin,
+    "Direct_Bilirubin": enteredDirectbilirubin,
+
+    'Gender': enteredGender,
+    "Total_Protiens": enteredTotalprotiens,
+    "Alkaline_Phosphotase": enteredPhospotase
     };
 
     
@@ -79,11 +121,15 @@ const ambuminandglobulinratioChangeHandler = (event) => {
     setEnteredAspartateaminotransferase('');
     setEnteredBilirubin('');
     setEnteredDirectbilirubin('');
-  
     setEnteredGender('');
     setEnteredTotalporteins('');
     setEnteredPhospotase('');
 
+<<<<<<< HEAD
+=======
+    
+
+>>>>>>> 4955bbe034835660324aade82f85100e3769f5a8
     function displayPopUp() {
       
       const popup = document.getElementById('mypopup');
