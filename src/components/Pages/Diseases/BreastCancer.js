@@ -97,7 +97,7 @@ export default function BreastCancer() {
     //   alert("Enter RadiusMean between range 1 - 5");
     //   return;
     // }
-   
+   // }
 
     e.preventDefault();
     const submittingValue = {
