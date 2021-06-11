@@ -62,54 +62,6 @@ export default function HeartDisease() {
 
       function handleSubmit(e) {
 
-        if(enteredAge > 100 || enteredAge    < 1) {
-          alert("Enter Age between range 1 - 100");
-          return;
-        }
-        if(enteredSex !== 'm' || enteredSex !== 'f' || enteredSex !== 'M' || enteredSex !== 'F') {
-          alert("Enter Gender Male : m, M Female: f, F");
-          return;
-        }
-        if(enteredCp > 4 || enteredCp    < 1) {
-          alert("Enter Chest Pain Type between range 1 - 4");
-          return;
-        }
-        if(enteredTrestbps > 6 || enteredTrestbps    < 2) {
-          alert("Enter Trestbps between range 2 - 6");
-          return;
-        }
-        if(enteredChol > 35 || enteredChol    < 3) {
-          alert("Enter Cholestrol between range 3 - 35");
-          return;
-        }
-        if(enteredFbs !== 1 || enteredFbs !== 0) {
-          alert("If you HaveFasting blood Sugar Enter 1 else Enter 0");
-          return;
-        }
-        if(enteredRestecg > 2 || enteredRestecg < 0) {
-          alert("Enter Resting Electrocardiograghic Result: 0 ,1, 2");
-          return;
-        }
-        if(enteredThalach > 210 || enteredThalach    < 80) {
-          alert("Enter Maximum Heartrate Achieved between range 80 - 210");
-          return;
-        }
-        if(enteredExang !== 1 || enteredExang !== 0) {
-          alert("If you Exercise Enter 1 else Enter 0");
-          return;
-        }
-        if(enteredOldpeak > 3 || enteredOldpeak    < 0) {
-          alert("Enter Old Peak between range 3 - 35");
-          return;
-        }
-        if(enteredSlope > 3 || enteredSlope    < 0) {
-          alert("Enter Slope of Peak Exercise between range 0 - 3");
-          return;
-        }
-        if(enteredCathal > 3 || enteredCathal    < 0) {
-          alert("Enter Major Vessel between range 0 - 3");
-          return;
-        }
 
         e.preventDefault();
         const submittingValue = {
@@ -155,23 +107,23 @@ export default function HeartDisease() {
           },
           body: JSON.stringify(submittingValue),
         }).then(res => res.text())         
-        .then(text => console.log(text)
+        .then(text => ( console.log(text), setOutput(text), displayPopUp() )
         ).catch((err) => {
           console.log(err);
         });
     
-        fetch('https://techno-vedha.herokuapp.com/heart',{
-          method: 'GET',
-          headers: {
-            'Content-type': 'application/json',
-            'Accept': 'application/json'
-          },
-        }).then(res => res.text())         
-        .then(text => setOutput(text),
-        displayPopUp()
-        ).catch((err) => {
-          console.log(err);
-        });
+        // fetch('https://techno-vedha.herokuapp.com/heart',{
+        //   method: 'GET',
+        //   headers: {
+        //     'Content-type': 'application/json',
+        //     'Accept': 'application/json'
+        //   },
+        // }).then(res => res.text())         
+        // .then(text => setOutput(text),
+        // displayPopUp()
+        // ).catch((err) => {
+        //   console.log(err);
+        // });
       }
 
 // for result popup window
@@ -190,8 +142,50 @@ window.onclick = function(event) {
 }
 
 
+//Validation
+function genderValidation() {
+  const gender = document.getElementById('gender');
 
+  gender.addEventListener('input', function() {
+    if(gender.validity.patternMismatch) {
+      gender.setCustomValidity("Enter For Male: M or m and for Female: F or f ");
+    } else {
+      gender.setCustomValidity("");
+    }
+  });
+}
 
+function validation123() {
+  let restecg = document.getElementById('restecg');
+
+  restecg.oninput = function() {
+    if(restecg.validity.rangeOverflow || restecg.validity.rangeUnderflow) {
+      restecg.setCustomValidity("Enter Resting Electrocardiograghic Result: 0 ,1, 2");
+    }else {
+      restecg.setCustomValidity("");
+    }
+  }
+}
+
+function validation01() {
+  const fbs = document.getElementById('fbs');
+  const exang = document.getElementById('exang');
+  
+  fbs.addEventListener('input', function() {
+    if(fbs.validity.rangeOverflow || fbs.validity.rangeUnderflow) {
+      fbs.setCustomValidity("If you have Fasting Sugar Enter: 1, else Enter: 0");
+    }else {
+      fbs.setCustomValidity("");
+    }
+  });
+  exang.addEventListener('input', function() {
+    if(exang.validity.rangeOverflow || exang.validity.rangeUnderflow) {
+      exang.setCustomValidity("If you Exercise Enter: 1, else Enter: 0");
+    }else {
+      exang.setCustomValidity("");
+    }
+  });
+}
 
     return (
         <>
@@ -202,62 +196,62 @@ window.onclick = function(event) {
         <form onSubmit={handleSubmit}>
   <label>
   AGE:
-    <input type="number" name="Age" value={enteredAge} onChange={AgeChangeHandler}/>
+    <input type="number" name="Age" required min="1" max="100"  value={enteredAge} onChange={AgeChangeHandler}/>
   </label>
   <br />
   <label>
   GENDER:
-    <input type="text" name="Sex" value={enteredSex} onChange={SexChangeHandler} />
+    <input type="text" id="gender"onInput={genderValidation} name="Sex" required pattern="[f]|[m]|[F]|[M]"  value={enteredSex} onChange={SexChangeHandler} />
   </label>
   <br />
   <label>
   Chest Pain Type:
-    <input type="number" name="Cp" value={enteredCp} onChange={CpChangeHandler} />
+    <input type="number" name="Cp" required  value={enteredCp} onChange={CpChangeHandler} />
   </label>
   <br />
   <label>
   TRESTBPS:
-    <input type="number" name="Trestbps" value={enteredTrestbps} onChange={TrestbpsChangeHandler} />
+    <input type="number" name="Trestbps" required  value={enteredTrestbps} onChange={TrestbpsChangeHandler} />
   </label>
   <br />
   <label>
   CHOLESTEROL:
-    <input type="number" name="Chol" value={enteredChol} onChange={CholChangeHandler} />
+    <input type="number" name="Chol" required  value={enteredChol} onChange={CholChangeHandler} />
   </label>
   <br />
   <label>
-  FBS:
-    <input type="number" name="Fbs" value={enteredFbs} onChange={FbsChangeHandler} />
+  Fasting Sugar:
+    <input type="number" onInput={validation01} id="fbs" name="Fbs" required min="0" max="1"  value={enteredFbs} onChange={FbsChangeHandler} />
   </label>
   <br />
   <label>
-  RESTECG:
-    <input type="number" name="Restecg" value={enteredRestecg} onChange={RestecgChangeHandler} />
+  Resting Electrocardiograghic:
+    <input type="number" onInput={validation123} id="restecg" name="Restecg" required min="0" max="2"  value={enteredRestecg} onChange={RestecgChangeHandler} />
   </label>
   <br />
   <label>
-  THALACH:
-    <input type="number" name="Thalach" value={enteredThalach} onChange={ThalachChangeHandler} />
+  Maximum Heartrate:
+    <input type="number" name="Thalach" required  value={enteredThalach} onChange={ThalachChangeHandler} />
   </label>
   <br />
   <label>
-  EXANG:
-    <input type="number" name="Exang" value={enteredExang} onChange={ExangChangeHandler} />
+  Exercise:
+    <input type="number" id="exang" onInput={validation01} name="Exang"  required min="0" max="1" value={enteredExang} onChange={ExangChangeHandler} />
   </label>
   <br />
   <label>
   OLDPEAK:
-    <input type="number" name="Oldpeak" value={enteredOldpeak} onChange={OldpeakChangeHandler} />
+    <input type="number" name="Oldpeak" required   value={enteredOldpeak} onChange={OldpeakChangeHandler} />
   </label>
   <br />
   <label>
-  SLOPE:
-    <input type="number" name="Slope" value={enteredSlope} onChange={SlopeChangeHandler} />
+  Slope of Peak Exercise:
+    <input type="number" name="Slope"  required min="0" max="3" value={enteredSlope} onChange={SlopeChangeHandler} />
   </label>
   <br />
   <label>
-  CA:
-    <input type="number" name="Cathal" value={enteredCathal} onChange={CathalChangeHandler} />
+  Major Vessel:
+    <input type="number" name="Cathal"  required value={enteredCathal} onChange={CathalChangeHandler} />
   </label>
   <br />
   

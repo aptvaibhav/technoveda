@@ -108,107 +108,7 @@ const AneChangeHandler = (event) => {
  
 
 
-function handleSubmit(e) {
-
-  if(enteredAge > 100 || enteredAge < 0) {
-    alert("Enter Age between range 0 - 100");
-    return;
-  }
-  if(enteredBp > 200 || enteredBp < 50) {
-    alert("Enter Blood Pressure between range 50 - 200");
-    return;
-  }
-  if(enteredSg > 3 || enteredSg < 0) {
-    alert("Enter Specific Gravity between range 0 - 3");
-    return;
-  }
-  if(enteredAl > 5 || enteredAl < 0) {
-    alert("Enter Albumin between range 0 - 5");
-    return;
-  }
-  if(enteredSu > 5 || enteredSu < 0) {
-    alert("Enter Sugar between range 0 - 5");
-    return;
-  }
-  if(enteredRbc !== 1 || enteredRbc !== 0) {
-    alert("Enter Red Blood Cell for Normal: 1, else 0");
-    return;
-  }
-  if(enteredPc !== 1 || enteredPc !== 0) {
-    alert("Enter Pus Cell, If present: 1 else 0");
-    return;
-  }
-  if(enteredPcc !== 1 || enteredPcc !== 0) {
-    alert("Enter Pus Cell Slumps, If present: 1 else 0");
-    return;
-  }
-  if(enteredBa !== 1 || enteredBa !== 0) {
-    alert("Enter Bacteria, If present: 1 else 0");
-    return;
-  }
-  
-  if(enteredBgr > 400 || enteredBgr < 20) {
-    alert("Enter Blood Gross Random between range 20 - 400");
-    return;
-  }
-  if(enteredBu > 400 || enteredBu < 1) {
-    alert("Enter Blood urea between range 1 - 400");
-    return;
-  }
-  if(enteredSc > 70 || enteredSc < 0.1) {
-    alert("Enter Cratinine between range 0.1 - 70");
-    return;
-  }
-  if(enteredSod > 170 || enteredSod < 2) {
-    alert("Enter Sodium between range 2 - 170");
-    return;
-  }
-  if(enteredPot > 50 || enteredPot < 1) {
-    alert("Enter Potasium between range 1 - 50");
-    return;
-  }
-  if(enteredHemo > 20 || enteredHemo < 2) {
-    alert("Enter Hemoglobin between range 2 - 20");
-    return;
-  }
-  if(enteredPcv > 60 || enteredPcv < 5) {
-    alert("Enter pack Cell Volume between range 5 - 60");
-    return;
-  }
-  if(enteredWc > 26400 || enteredWc < 2000) {
-    alert("Enter White Blood Cell Count between range 2000 - 26400");
-    return;
-  }
-  if(enteredRc > 15 || enteredRc < 1) {
-    alert("Enter White Blood Cell Count between range 1 - 15");
-    return;
-  }
-  if(enteredHtn !== 1 || enteredHtn !== 0) {
-    alert("Enter Hyper Tension, If present: 1 else 0");
-    return;
-  }
-  if(enteredDm !== 1 || enteredDm !== 0) {
-    alert("Enter Diabetse Mellitus, If present: 1 else 0");
-    return;
-  }
-  if(enteredCad !== 1 || enteredCad !== 0) {
-    alert("Enter Coronary Artery Disease, If present: 1 else 0");
-    return;
-  }
-  if(enteredAppet !== 1 || enteredAppet !== 0) {
-    alert("Enter Appetite, If Good: 1 else 0");
-    return;
-  }
-  if(enteredPe !== 1 || enteredPe !== 0) {
-    alert("Enter Petel Edema, If Yes: 1 else 0");
-    return;
-  }
-  if(enteredAne !== 1 || enteredAne !== 0) {
-    alert("Enter Anemia, If Yes: 1 else 0");
-    return;
-  }
-  
-  
+function handleSubmit(e) {  
 
 e.preventDefault();
 const submittingValue = {
@@ -265,11 +165,8 @@ setEnteredPe('');
 setEnteredAne('');
 
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 4955bbe034835660324aade82f85100e3769f5a8
 function displayPopUp() {
   
   const popup = document.getElementById('mypopup');
@@ -283,23 +180,23 @@ function displayPopUp() {
       },
       body: JSON.stringify(submittingValue),
     }).then(res => res.text())         
-    .then(text => console.log(text)
+    .then(text => ( console.log(text), setOutput(text), displayPopUp() )
     ).catch((err) => {
       console.log(err);
     });
 
-    fetch('https://techno-vedha.herokuapp.com/kidney',{
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json',
-        'Accept': 'application/json'
-      },
-    }).then(res => res.text())         
-    .then(text => setOutput(text),
-    displayPopUp()
-    ).catch((err) => {
-      console.log(err);
-    });
+    // fetch('https://techno-vedha.herokuapp.com/kidney',{
+    //   method: 'GET',
+    //   headers: {
+    //     'Content-type': 'application/json',
+    //     'Accept': 'application/json'
+    //   },
+    // }).then(res => res.text())         
+    // .then(text => setOutput(text),
+    // displayPopUp()
+    // ).catch((err) => {
+    //   console.log(err);
+    // });
   }
 
 
@@ -319,6 +216,91 @@ window.onclick = function(event) {
 }
 
 
+//Validation
+function validation01() {
+  const rbc = document.getElementById('rbc');
+  const pc = document.getElementById('pc');
+  const pcc = document.getElementById('pcc');
+  const ba = document.getElementById('ba');
+  const htn = document.getElementById('htn');
+  const dm = document.getElementById('dm');
+  const cad = document.getElementById('cad');
+  const appet = document.getElementById('appet');
+  const pe = document.getElementById('pe');
+  const ane = document.getElementById('ane');
+  
+  rbc.addEventListener('input', function() {
+    if(rbc.validity.rangeOverflow || rbc.validity.rangeUnderflow) {
+      rbc.setCustomValidity("Enter Red Blood Cell for Normal: 1, else 0");
+    }else {
+      rbc.setCustomValidity("");
+    }
+  });
+  pc.addEventListener('input', function() {
+    if(pc.validity.rangeOverflow || pc.validity.rangeUnderflow) {
+      pc.setCustomValidity("IfEnter Pus Cell, If present: 1 else 0");
+    }else {
+      pc.setCustomValidity("");
+    }
+  });
+  pcc.addEventListener('input', function() {
+    if(pcc.validity.rangeOverflow || pcc.validity.rangeUnderflow) {
+      pcc.setCustomValidity("Enter Pus Cell Slumps, If present: 1 else 0");
+    }else {
+      pcc.setCustomValidity("");
+    }
+  });
+  ba.addEventListener('input', function() {
+    if(ba.validity.rangeOverflow || ba.validity.rangeUnderflow) {
+      ba.setCustomValidity("Enter Bacteria, If present: 1 else 0");
+    }else {
+      ba.setCustomValidity("");
+    }
+  });
+  htn.addEventListener('input', function() {
+    if(htn.validity.rangeOverflow || htn.validity.rangeUnderflow) {
+      htn.setCustomValidity("Enter Hyper Tension, If present: 1 else 0");
+    }else {
+      htn.setCustomValidity("");
+    }
+  });
+  dm.addEventListener('input', function() {
+    if(dm.validity.rangeOverflow || dm.validity.rangeUnderflow) {
+      dm.setCustomValidity("Enter Diabetes Mellitus, If present: 1 else 0");
+    }else {
+      dm.setCustomValidity("");
+    }
+  });
+  cad.addEventListener('input', function() {
+    if(cad.validity.rangeOverflow || cad.validity.rangeUnderflow) {
+      cad.setCustomValidity("Enter Coronary Artery Disease, If present: 1 else 0");
+    }else {
+      cad.setCustomValidity("");
+    }
+  });
+  appet.addEventListener('input', function() {
+    if(appet.validity.rangeOverflow || appet.validity.rangeUnderflow) {
+      appet.setCustomValidity("Enter Appetite, If present: 1 else 0");
+    }else {
+      appet.setCustomValidity("");
+    }
+  });
+  pe.addEventListener('input', function() {
+    if(pe.validity.rangeOverflow || pe.validity.rangeUnderflow) {
+      pe.setCustomValidity("Enter Petel Edema, If present: 1 else 0");
+    }else {
+      pe.setCustomValidity("");
+    }
+  });
+  ane.addEventListener('input', function() {
+    if(ane.validity.rangeOverflow || ane.validity.rangeUnderflow) {
+      ane.setCustomValidity("Enter Anemia, If present: 1 else 0");
+    }else {
+      ane.setCustomValidity("");
+    }
+  });
+}
+
 
 
     return (
@@ -331,122 +313,122 @@ window.onclick = function(event) {
 
   <label>
   AGE:
-    <input type="number" name="Age" value={enteredAge} onChange={AgeChangeHandler} />
+    <input type="number" name="Age" min="1" max="100" required   value={enteredAge} onChange={AgeChangeHandler} />
   </label>
   <br />
   <label>
   BP:
-    <input type="number" name="Bp" value={enteredBp} onChange={BpChangeHandler} />
+    <input type="number" name="Bp" value={enteredBp} required  onChange={BpChangeHandler} />
   </label>
   <br />
   <label>
   Specific Gravity:
-    <input type="number" name="Sg" value={enteredSg} onChange={SgChangeHandler} />
+    <input type="number" name="Sg" min="0" max="3"  required value={enteredSg} onChange={SgChangeHandler} />
   </label>
   <br />
   <label>
   Albumin:
-    <input type="number" name="Al" value={enteredAl} onChange={AlChangeHandler} />
+    <input type="number" name="Al" min="0" max="5"  required value={enteredAl} onChange={AlChangeHandler} />
   </label>
   <br />
   <label>
   Sugar:
-    <input type="number" name="Su" value={enteredSu} onChange={SuChangeHandler} />
+    <input type="number" name="Su" min="0" max="5" required  value={enteredSu} onChange={SuChangeHandler} />
   </label>
   <br />
   <label>
   RBC:
-    <input type="text" name="Rbc" value={enteredRbc} onChange={RbcChangeHandler} />
+    <input type="number"id="rbc"  onInput={validation01} name="Rbc"   required min="0" max="1" value={enteredRbc} onChange={RbcChangeHandler} />
   </label>
   <br />
   <label>
   Pus Cell:
-    <input type="text" name="Pc" value={enteredPc} onChange={PcChangeHandler} />
+    <input type="number"id="pc"  onInput={validation01} name="Pc"  required  min="0" max="1" value={enteredPc} onChange={PcChangeHandler} />
   </label>
   <br />
   <label>
   Pus Cell Slumps:
-    <input type="text" name="Pcc" value={enteredPcc} onChange={PccChangeHandler} />
+    <input type="number" id="pcc"  onInput={validation01}name="Pcc"  required  min="0" max="1" value={enteredPcc} onChange={PccChangeHandler} />
   </label>
   <br />
   <label>
   Bacteria :
-    <input type="text" name="Ba" value={enteredBa} onChange={BaChangeHandler} />
+    <input type="number" name="Ba"  onInput={validation01}id="ba"  required min="0" max="1"  value={enteredBa} onChange={BaChangeHandler} />
   </label>
   <br />
   <label>
   Blood Glucose Random:
-    <input type="number" name="Bgr" value={enteredBgr} onChange={BgrChangeHandler} />
+    <input type="number" name="Bgr" value={enteredBgr}  required onChange={BgrChangeHandler} />
   </label>
   <br />
   <label>
   Blood Urea:
-    <input type="number" name="Bu" value={enteredBu} onChange={BuChangeHandler} />
+    <input type="number" name="Bu" value={enteredBu} required  onChange={BuChangeHandler} />
   </label>
   <br />
   <label>
   Serem Creatinine:
-    <input type="number" name="Sc" value={enteredSc} onChange={ScChangeHandler} />
+    <input type="number" name="Sc" value={enteredSc} required  onChange={ScChangeHandler} />
   </label>
   <br />
   <label>
   Sodium:
-    <input type="number" name="Sod" value={enteredSod} onChange={SodChangeHandler} />
+    <input type="number" name="Sod" value={enteredSod}  required onChange={SodChangeHandler} />
   </label>
   <br />
   <label>
     Potasium:
-    <input type="number" name="Pot" value={enteredPot} onChange={PotChangeHandler} />
+    <input type="number" name="Pot" value={enteredPot}  required onChange={PotChangeHandler} />
   </label>
   <br />
   <label>
   Hemoglobin:
-    <input type="number" name="Hemo" value={enteredHemo} onChange={HemoChangeHandler} />
+    <input type="number" name="Hemo" value={enteredHemo} required  onChange={HemoChangeHandler} />
   </label>
   <br />
   <label>
   Pack Cell Volume:
-    <input type="number" name="Pcv" value={enteredPcv} onChange={PcvChangeHandler}  />
+    <input type="number" name="Pcv" value={enteredPcv} required  onChange={PcvChangeHandler}  />
   </label>
   <br />
   <label>
   WBC Count:
-    <input type="number" name="Wc" value={enteredWc} onChange={WcChangeHandler} />
+    <input type="number" name="Wc" value={enteredWc}  required onChange={WcChangeHandler} />
   </label>
   <br />
   <label>
   RBC Count:
-    <input type="number" name="Rc" value={enteredRc} onChange={RcChangeHandler} />
+    <input type="number" name="Rc" value={enteredRc}  required onChange={RcChangeHandler} />
   </label>
   <br />
   <label>
   Hyper Tension:
-    <input type="text" name="Htn" value={enteredHtn} onChange={HtnChangeHandler} />
+    <input type="number"id="htn"  onInput={validation01}  required name="Htn" min="0" max="1"  value={enteredHtn} onChange={HtnChangeHandler} />
   </label>
   <br />
   <label>
   Diabetes:
-    <input type="text" name="Dm" value={enteredDm} onChange={DmChangeHandler} />
+    <input type="number"id="dm"  onInput={validation01}  required name="Dm" min="0" max="1"  value={enteredDm} onChange={DmChangeHandler} />
   </label>
   <br />
   <label>
   Coronary Artery Disease:
-    <input type="text" name="Cad" value={enteredCad} onChange={CadChangeHandler} />
+    <input type="number"id="cad"   onInput={validation01} required name="Cad"  min="0" max="1" value={enteredCad} onChange={CadChangeHandler} />
   </label>
   <br />
   <label>
   Appetite:
-    <input type="text" name="Appet" value={enteredAppet} onChange={AppetChangeHandler} />
+    <input type="number"id="appet" onInput={validation01}   required name="Appet" min="0" max="1"  value={enteredAppet} onChange={AppetChangeHandler} />
   </label>
   <br />
   <label>
   Petel Edema:
-    <input type="text" name="Pe" value={enteredPe} onChange={PeChangeHandler} />
+    <input type="number"id="pe"  onInput={validation01}name="Pe"  required  min="0" max="1" value={enteredPe} onChange={PeChangeHandler} />
   </label>
   <br />
   <label>
   Anemia:
-    <input type="text" name="Ane" value={enteredAne} onChange={AneChangeHandler} />
+    <input type="number" id="ane" onInput={validation01} name="Ane" required  min="0" max="1"  value={enteredAne} onChange={AneChangeHandler} />
   </label>
   <br />
   
