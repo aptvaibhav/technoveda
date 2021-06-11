@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/technoveda/static/css/main.f8dcf9ac.chunk.css",
+    "main.js": "/technoveda/static/js/main.edd00e2a.chunk.js",
+    "main.js.map": "/technoveda/static/js/main.edd00e2a.chunk.js.map",
+    "runtime-main.js": "/technoveda/static/js/runtime-main.b3e51b19.js",
+    "runtime-main.js.map": "/technoveda/static/js/runtime-main.b3e51b19.js.map",
+    "static/js/2.fb807ec3.chunk.js": "/technoveda/static/js/2.fb807ec3.chunk.js",
+    "static/js/2.fb807ec3.chunk.js.map": "/technoveda/static/js/2.fb807ec3.chunk.js.map",
+    "static/js/3.3634c781.chunk.js": "/technoveda/static/js/3.3634c781.chunk.js",
+    "static/js/3.3634c781.chunk.js.map": "/technoveda/static/js/3.3634c781.chunk.js.map",
+    "index.html": "/technoveda/index.html",
+    "static/css/main.f8dcf9ac.chunk.css.map": "/technoveda/static/css/main.f8dcf9ac.chunk.css.map",
+    "static/js/2.fb807ec3.chunk.js.LICENSE.txt": "/technoveda/static/js/2.fb807ec3.chunk.js.LICENSE.txt",
+    "static/media/blood.ea587fe8.png": "/technoveda/static/media/blood.ea587fe8.png",
+    "static/media/curved.6552a3f3.png": "/technoveda/static/media/curved.6552a3f3.png",
+    "static/media/diabetes.6f4d24be.jpg": "/technoveda/static/media/diabetes.6f4d24be.jpg",
+    "static/media/home.6683b6bd.jpeg": "/technoveda/static/media/home.6683b6bd.jpeg",
+    "static/media/liver.534d97ca.jpg": "/technoveda/static/media/liver.534d97ca.jpg",
+    "static/media/signup.4eb5ac51.png": "/technoveda/static/media/signup.4eb5ac51.png",
+    "static/media/vector.bf3b3f54.png": "/technoveda/static/media/vector.bf3b3f54.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b3e51b19.js",
+    "static/js/2.fb807ec3.chunk.js",
+    "static/css/main.f8dcf9ac.chunk.css",
+    "static/js/main.edd00e2a.chunk.js"
+  ]
+}
