@@ -46,38 +46,7 @@ export default function Diabetes() {
 
   function handleSubmit(e) {
 
-    if(enteredPregnanices > 10 || enteredPregnanices < 0) {
-      alert("Enter Pregnanicies between range 0 - 10");
-      return;
-    }
-    if(enteredGlucose > 90 || enteredGlucose < 0) {
-      alert("Enter Glucose between range 0 - 90");
-      return;
-    }
-    if(enteredBloodPressure > 140 || enteredBloodPressure < 60) {
-      alert("Enter BloodPressure between range 60 - 140");
-      return;
-    }
-    if(enteredSkinThickness > 100 || enteredSkinThickness < 1) {
-      alert("Enter SkinThickness between range 1 - 100");
-      return;
-    }
-    if(enteredInsulin> 900 || enteredInsulin < 0) {
-      alert("Enter Insulin between range 0 - 900");
-      return;
-    }
-    if(enteredBmi > 30 || enteredBmi < 0) {
-      alert("Enter BMI between range 0 - 10");
-      return;
-    }
-    if(enteredDiabetesPedigree > 3 || enteredDiabetesPedigree < 0.05) {
-      alert("Enter DiabetesPedigree between range 0.05 - 3");
-      return;
-    }
-    if(enteredAge > 100 || enteredAge < 1) {
-      alert("Enter Age between range 1 - 100");
-      return;
-    }
+
 
     e.preventDefault();
     const submittingValue = {
@@ -115,23 +84,23 @@ export default function Diabetes() {
       },
       body: JSON.stringify(submittingValue),
     }).then(res => res.text())         
-    .then(text => console.log(text)
+    .then(text => ( console.log(text), setOutput(text), displayPopUp() )
     ).catch((err) => {
       console.log(err);
     });
 
-    fetch('https://techno-vedha.herokuapp.com/diabetes',{
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json',
-        'Accept': 'application/json'
-      },
-    }).then(res => res.text())         
-    .then(text => setOutput(text),
-    displayPopUp()
-    ).catch((err) => {
-      console.log(err);
-    });
+    // fetch('https://techno-vedha.herokuapp.com/diabetes',{
+    //   method: 'GET',
+    //   headers: {
+    //     'Content-type': 'application/json',
+    //     'Accept': 'application/json'
+    //   },
+    // }).then(res => res.text())         
+    // .then(text => setOutput(text),
+    // displayPopUp()
+    // ).catch((err) => {
+    //   console.log(err);
+    // });
   }
   
 
@@ -163,42 +132,42 @@ window.onclick = function(event) {
         
   <label>
   Pregnancies:
-    <input type="number" name="Pregnancies" value={enteredPregnanices} onChange={pregnanicesChangeHandler} />
+    <input type="number" name="Pregnancies" required min="1" max="17" value={enteredPregnanices} onChange={pregnanicesChangeHandler} />
   </label>
   <br />
   <label>
   Glucose:
-    <input type="number" name="Glucose" value={enteredGlucose} onChange={glucoseChangeHandler} />
+    <input type="number" name="Glucose" required min="1" max="199" value={enteredGlucose} onChange={glucoseChangeHandler} />
   </label>
   <br />
   <label>
   BloodPressure:
-    <input type="number" name="BloodPressure" value={enteredBloodPressure} onChange={bloodPressureChangeHandler}/>
+    <input type="number" name="BloodPressure" required min="20" max="180" value={enteredBloodPressure} onChange={bloodPressureChangeHandler}/>
   </label>
   <br />
   <label>
   SkinThickness:
-    <input type="number" name="SkinThickness" value={enteredSkinThickness} onChange={skinThicknessChangeHandler}/>
+    <input type="number" name="SkinThickness" required min="0" max="90" value={enteredSkinThickness} onChange={skinThicknessChangeHandler}/>
   </label>
   <br />
   <label>
   Insulin:
-    <input type="number" name="Insulin" value={enteredInsulin} onChange={insulinChangeHandler}/>
+    <input type="number" name="Insulin" required min="0" max="846" value={enteredInsulin} onChange={insulinChangeHandler}/>
   </label>
   <br />
   <label>
   BMI:
-    <input type="number" name="BMI" value={enteredBmi} onChange={bmiChangeHandler}/>
+    <input type="number" name="BMI" required step="0.01" min="0" max="67.1" value={enteredBmi} onChange={bmiChangeHandler}/>
   </label>
   <br />
   <label>
   DiabetesPedigreeFunction:
-    <input type="number" name="DiabetesPedigreeFunction" value={enteredDiabetesPedigree} onChange={diabestesPedigreeChangeHandler}/>
+    <input type="number" name="DiabetesPedigreeFunction" required step="0.001" min="0.078" max="2.42" value={enteredDiabetesPedigree} onChange={diabestesPedigreeChangeHandler}/>
   </label>
   <br />
   <label>
   Age:
-    <input type="number" name="Age" value={enteredAge} onChange={ageChangeHandler}/>
+    <input type="number" name="Age" required min="1" max="100" value={enteredAge} onChange={ageChangeHandler}/>
   </label>
   <br />
  

@@ -55,47 +55,6 @@ const ambuminandglobulinratioChangeHandler = (event) => {
 
   function handleSubmit(e) {
 
-    if(enteredAge > 100 || enteredAge    < 1) {
-      alert("Enter Age between range 1 - 100");
-      return;
-    }
-    if(enteredAlamineaminotransferase > 2000 || enteredAlamineaminotransferase    < 10) {
-      alert("Enter Alamine aminotransferase between range 10 - 2000");
-      return;
-    }
-    if(enteredAlbumin > 10 || enteredAlbumin    < 0.1) {
-      alert("Enter Albumin between range 0.1 - 10");
-      return;
-    }
-    if(enteredAmbuminandglobulinratio > 5 || enteredAmbuminandglobulinratio    < 0.1) {
-      alert("Enter Ambumin and globulin ratio between range 0.1 - 5");
-      return;
-    }
-    if(enteredAspartateaminotransferase > 5000 || enteredAspartateaminotransferase    < 10) {
-      alert("Enter Aspartate aminotransferase between range 1 0- 5000");
-      return;
-    }
-    if(enteredBilirubin > 75 || enteredBilirubin    < 0.1) {
-      alert("Enter Total Bilirubin between range 0.1 - 75");
-      return;
-    }
-    if(enteredDirectbilirubin > 25 || enteredDirectbilirubin    < 0.1) {
-      alert("Enter Directbilirubin between range 0.1 - 25");
-      return;
-    }
-    if(enteredGender !== 'm' || enteredGender !== 'f' || enteredGender !== 'M' || enteredGender !== 'F') {  
-      alert("Enter Gender Male : m, M Female: f, F");
-      return;
-    }
-    if(enteredTotalprotiens > 10 || enteredTotalprotiens    < 1) {
-      alert("Enter Total porteins between range 1 - 10");
-      return;
-    }
-    if(enteredPhospotase > 250 || enteredPhospotase    < 60) {
-      alert("Enter Alkaline Phosphotase between range 60 - 2500");
-      return;
-    }
-
     e.preventDefault();
     const submittingValue = {
 
@@ -125,11 +84,8 @@ const ambuminandglobulinratioChangeHandler = (event) => {
     setEnteredTotalporteins('');
     setEnteredPhospotase('');
 
-<<<<<<< HEAD
-=======
     
 
->>>>>>> 4955bbe034835660324aade82f85100e3769f5a8
     function displayPopUp() {
       
       const popup = document.getElementById('mypopup');
@@ -144,23 +100,23 @@ const ambuminandglobulinratioChangeHandler = (event) => {
       },
       body: JSON.stringify(submittingValue),
     }).then(res => res.text())         
-    .then(text => console.log(text)
+    .then(text => ( console.log(text), setOutput(text), displayPopUp() )
     ).catch((err) => {
       console.log(err);
     });
 
-    fetch('https://techno-vedha.herokuapp.com/liver',{
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json',
-        'Accept': 'application/json'
-      },
-    }).then(res => res.text())         
-    .then(text => setOutput(text),
-    displayPopUp()
-    ).catch((err) => {
-      console.log(err);
-    });
+    // fetch('https://techno-vedha.herokuapp.com/liver',{
+    //   method: 'GET',
+    //   headers: {
+    //     'Content-type': 'application/json',
+    //     'Accept': 'application/json'
+    //   },
+    // }).then(res => res.text())         
+    // .then(text => setOutput(text),
+    // displayPopUp()
+    // ).catch((err) => {
+    //   console.log(err);
+    // });
   }
 
 
@@ -180,6 +136,19 @@ const ambuminandglobulinratioChangeHandler = (event) => {
   }
 
 
+  //Validation
+function genderValidation() {
+  const gender = document.getElementById('gender');
+
+  gender.addEventListener('input', function() {
+    if(gender.validity.patternMismatch) {
+      gender.setCustomValidity("Enter For Male: M or m and for Female: F or f ");
+    } else {
+      gender.setCustomValidity("");
+    }
+  });
+}
+
 
 
     return (
@@ -191,52 +160,52 @@ const ambuminandglobulinratioChangeHandler = (event) => {
         <form onSubmit={handleSubmit}>
   <label>
   Gender:
-    <input type="text" name="Gender" value={enteredGender} onChange={genderChangeHandler} />
+    <input type="text" id="gender" onInput={genderValidation} required pattern="[f]|[F]|[m]|[M]" name="Gender" value={enteredGender} onChange={genderChangeHandler} />
   </label>
   <br />
   <label>
   AGE:
-    <input type="number" name="Age" value={enteredAge} onChange={ageChangeHandler}/>
+    <input type="number" name="Age" required min="1" max="100" value={enteredAge} onChange={ageChangeHandler}/>
   </label>
   <br />
   <label>
   Total_Bilirubin:
-    <input type="number" name="Totalbilirubin" value={enteredBilirubin} onChange={belirubinChangeHandler}/>
+    <input type="number" name="Totalbilirubin" required step="0.1"value={enteredBilirubin} onChange={belirubinChangeHandler}/>
   </label>
   <br />
   <label>
   Direct_Bilirubin:
-    <input type="number" name="Directbilirubin" value={enteredDirectbilirubin} onChange={directbilirubinChangeHandler}/>
+    <input type="number" name="Directbilirubin"required step="0.1" value={enteredDirectbilirubin} onChange={directbilirubinChangeHandler}/>
   </label>
   <br />
   <label>
   Alkaline_Phosphotase:
-    <input type="number" name="Alkalinephostase" value={enteredPhospotase} onChange={phospotaseChangeHandler}/>
+    <input type="number" name="Alkalinephostase" required step="0.1"value={enteredPhospotase} onChange={phospotaseChangeHandler}/>
   </label>
   <br />
   <label>
   Alamine_Aminotransferase:
-    <input type="number" name="Alamineaminotransferase" value={enteredAlamineaminotransferase} onChange={alamineaminotransferaseChangeHandler}/>
+    <input type="number" name="Alamineaminotransferase"required step="0.1" value={enteredAlamineaminotransferase} onChange={alamineaminotransferaseChangeHandler}/>
   </label>
   <br />
   <label>
   Aspartate_Aminotransferase:
-    <input type="number" name="Aspartateaminotransferase" value={enteredAspartateaminotransferase} onChange={aspartateaminotransferaseChangeHandler}/>
+    <input type="number" name="Aspartateaminotransferase"required step="0.1" value={enteredAspartateaminotransferase} onChange={aspartateaminotransferaseChangeHandler}/>
   </label>
   <br />
   <label>
   Total_Protiens:
-    <input type="number" name="Totalprotiens" value={enteredTotalprotiens} onChange={totalprotiensChangeHandler}/>
+    <input type="number" name="Totalprotiens" required step="0.1"value={enteredTotalprotiens} onChange={totalprotiensChangeHandler}/>
   </label>
   <br />
   <label>
   Albumin:
-    <input type="number" name="Albumin" value={enteredAlbumin} onChange={albuminChangeHandler}/>
+    <input type="number" name="Albumin"required step="0.1" value={enteredAlbumin} onChange={albuminChangeHandler}/>
   </label>
   <br />
   <label>
   Albumin_and_Globulin_Ratio:
-    <input type="number" name="Ambuminandglobulinratio" value={enteredAmbuminandglobulinratio} onChange={ambuminandglobulinratioChangeHandler}/>
+    <input type="number" name="Ambuminandglobulinratio" required step="0.1"value={enteredAmbuminandglobulinratio} onChange={ambuminandglobulinratioChangeHandler}/>
   </label>
   <br />
   

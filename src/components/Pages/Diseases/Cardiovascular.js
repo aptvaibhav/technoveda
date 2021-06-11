@@ -60,55 +60,6 @@ export default function Cardiovascular() {
 
   function handleSubmit(e) {
 
-    if(enteredAge > 100 || enteredAge < 1) {
-      alert("Enter Age between range 1 - 100");
-      return;
-    }
-    if(enteredGender !== 'm' || enteredGender !== 'f' || enteredGender !== 'M' || enteredGender !== 'F') {  
-      alert("Enter Gender Male : m, M Female: f, F");
-      return;
-    }
-    if(enteredHeight > 250 || enteredHeight < 30) {
-      alert("Enter Height between range 30 - 250");
-      return;
-    }
-    if(enteredWeight > 200 || enteredWeight < 1) {
-      alert("Enter Weight between range 1 - 5");
-      return;
-    }
-    if(enteredAp_hi > 250 || enteredAp_hi < 130) {
-      alert("Enter SYSTOLIC BP between range 130 - 250");
-      return;
-    }
-    if(enteredAp_lo > 200 || enteredAp_lo < 70) {
-      alert("Enter DIASTOLIC BP between range 70 - 200");
-      return;
-    }
-    if(enteredCholestrol > 3 || enteredCholestrol < 1) {
-      alert("Enter Cholestrol for Normal: 1, aboveNormal: 2, Worst: 3");
-      return;
-    }
-    if(enteredGluc > 3 || enteredGluc < 1) {
-      alert("Enter Glucose for Normal: 1, aboveNormal: 2, Worst: 3");
-      return;
-    }
-    if(enteredSmoke !== 0 || enteredSmoke !== 1) {
-      alert("If you Smoke Enter 1 else Enter 0");
-      return;
-    }
-    if(enteredAlco !== 1 || enteredAlco !== 0) {
-      alert("If you drink Alcohol Enter 1 else Enter 0");
-      return;
-    }
-    if(enteredActive > 5 || enteredActive < 1) {
-      alert("If you do Excerise Enter 1 else Enter 0");
-      return;
-    }
-    if(enteredBMI > 35 || enteredBMI    < 3) {
-      alert("Enter BMI between range 3 - 35");
-      return;
-    }
-
     e.preventDefault();
     const submittingValue = {
      'age' : enteredAge,
@@ -138,11 +89,7 @@ export default function Cardiovascular() {
     setEnteredActive('');
     setEnteredBMI('');
 
-    function displayPopUp() {
-     
-      const popup = document.getElementById('mypopup');
-      popup.style.display = "block";
-    }
+
 
    
 
@@ -162,23 +109,23 @@ export default function Cardiovascular() {
       },
       body: JSON.stringify(submittingValue),
     }).then(res => res.text())         
-    .then(text => console.log(text)
+    .then(text => ( console.log(text), setOutput(text), displayPopUp() )
     ).catch((err) => {
       console.log(err);
     });
 
-    fetch('https://techno-vedha.herokuapp.com/cardio',{
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json',
-        'Accept': 'application/json'
-      },
-    }).then(res => res.text())         
-    .then(text => setOutput(text),
-    displayPopUp()
-    ).catch((err) => {
-      console.log(err);
-    });
+    // fetch('https://techno-vedha.herokuapp.com/cardio',{
+    //   method: 'GET',
+    //   headers: {
+    //     'Content-type': 'application/json',
+    //     'Accept': 'application/json'
+    //   },
+    // }).then(res => res.text())         
+    // .then(text => setOutput(text),
+    // displayPopUp()
+    // ).catch((err) => {
+    //   console.log(err);
+    // });
   }
 
 
@@ -199,6 +146,67 @@ window.onclick = function(event) {
 }
 
 
+//Validation
+function genderValidation() {
+  const gender = document.getElementById('gender');
+
+  gender.addEventListener('input', function() {
+    if(gender.validity.patternMismatch) {
+      gender.setCustomValidity("Enter For Male: M or m and for Female: F or f ");
+    } else {
+      gender.setCustomValidity("");
+    }
+  });
+}
+
+function validation123() {
+  let cholestrol = document.getElementById('chol');
+  let glucose = document.getElementById('gluc');
+
+  cholestrol.oninput = function() {
+    if(cholestrol.validity.rangeOverflow || cholestrol.validity.rangeUnderflow) {
+      cholestrol.setCustomValidity("Enter for Normal: 1, above Normal: 2, High: 3");
+    }else {
+      cholestrol.setCustomValidity("");
+    }
+  }
+  glucose.addEventListener('input', function() {
+    if(glucose.validity.rangeOverflow || glucose.validity.rangeUnderflow) {
+      glucose.setCustomValidity("Enter for Normal: 1, above Normal: 2, High: 3");
+    }else {
+      glucose.setCustomValidity("");
+    }
+  });
+}
+
+function validation01() {
+  const smoke = document.getElementById('smoke');
+  const alcohol = document.getElementById('alcohol');
+  const active = document.getElementById('active');
+  
+  smoke.addEventListener('input', function() {
+    if(smoke.validity.rangeOverflow || smoke.validity.rangeUnderflow) {
+      smoke.setCustomValidity("If you Smoke Enter: 1, else Enter: 0");
+    }else {
+      smoke.setCustomValidity("");
+    }
+  });
+  alcohol.addEventListener('input', function() {
+    if(alcohol.validity.rangeOverflow || alcohol.validity.rangeUnderflow) {
+      alcohol.setCustomValidity("If you drink Alcohol Enter: 1, else Enter: 0");
+    }else {
+      alcohol.setCustomValidity("");
+    }
+  });
+  active.addEventListener('input', function() {
+    if(active.validity.rangeOverflow || active.validity.rangeUnderflow) {
+      active.setCustomValidity("If you do Exercise Enter: 1, else Enter: 0");
+    }else {
+      active.setCustomValidity("");
+    }
+  });
+}
+
 
 
 
@@ -212,62 +220,62 @@ window.onclick = function(event) {
 
   <label>
   AGE:
-    <input type="number" name="Age" value={enteredAge} onChange={AgeChangeHandler} />
+    <input type="number" name="Age"required min="1" max="100" value={enteredAge} onChange={AgeChangeHandler} />
   </label>
   <br />
   <label>
   GENDER:
-    <input type="text" name="Gender" value={enteredGender} onChange={GenderChangeHandler} />
+    <input type="text" onInput={genderValidation} id="gender" name="Gender" pattern="[f]|[m]|[F]|[M]" value={enteredGender} onChange={GenderChangeHandler} />
   </label>
   <br />
   <label>
   HEIGHT:
-    <input type="number" name="Height" value={enteredHeight} onChange={HeightChangeHandler} />
+    <input type="number" name="Height"required step="0.01" value={enteredHeight} onChange={HeightChangeHandler} />
   </label>
   <br />
   <label>
   WEIGHT:
-    <input type="number" name="Weight" value={enteredWeight} onChange={WeightChangeHandler} />
+    <input type="number" name="Weight"required step="0.01" value={enteredWeight} onChange={WeightChangeHandler} />
   </label>
   <br />
   <label>
   SYSTOLIC BP:
-    <input type="number" name="Ap_hi" value={enteredAp_hi} onChange={Ap_hiChangeHandler} />
+    <input type="number" name="Ap_hi"required step="0.01"value={enteredAp_hi} onChange={Ap_hiChangeHandler} />
   </label>
   <br />
   <label>
   DIASTOLIC BP:
-    <input type="number" name="Ap_lo" value={enteredAp_lo} onChange={Ap_loChangeHandler} />
+    <input type="number" name="Ap_lo" required step="0.01" value={enteredAp_lo} onChange={Ap_loChangeHandler} />
   </label>
   <br />
   <label>
   CHOLESTEROL:
-    <input type="number" name="Cholestrol" value={enteredCholestrol} onChange={CholestrolChangeHandler} />
+    <input type="number"onInput={validation123} name="Cholestrol" id="chol" required min="1" max="3" value={enteredCholestrol} onChange={CholestrolChangeHandler} />
   </label>
   <br />
   <label>
   GLUCOSE:
-    <input type="number" name="Gluc" value={enteredGluc} onChange={GlucChangeHandler} />
+    <input type="number"onInput={validation123} name="Gluc" id="gluc" required min="1" max="3" value={enteredGluc} onChange={GlucChangeHandler} />
   </label>
   <br />
   <label>
   SMOKE:
-    <input type="number" name="Smoke" value={enteredSmoke} onChange={SmokeChangeHandler} />
+    <input type="number"id="smoke" onInput={validation01} name="Smoke" min="0" max="1" required value={enteredSmoke} onChange={SmokeChangeHandler} />
   </label>
   <br />
   <label>
   ALCOHOL:
-    <input type="number" name="Alco" value={enteredAlco} onChange={AlcoChangeHandler} />
+    <input type="number" id="alcohol" onInput={validation01}name="Alco" min="0" max="1" required value={enteredAlco} onChange={AlcoChangeHandler} />
   </label>
   <br />
   <label>
   ACTIVE:
-    <input type="number" name="Active" value={enteredActive} onChange={ActiveChangeHandler} />
+    <input type="number" id="active" onInput={validation01} name="Active" min="0" max="1" required value={enteredActive} onChange={ActiveChangeHandler} />
   </label>
   <br />
   <label>
   BMI:
-    <input type="number" name="BMI" value={enteredBMI} onChange={BMIChangeHandler} />
+    <input type="number" name="BMI" required min="3" max="35" value={enteredBMI} onChange={BMIChangeHandler} />
   </label>
   <br />
  

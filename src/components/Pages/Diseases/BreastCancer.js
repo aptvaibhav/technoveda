@@ -61,42 +61,42 @@ export default function BreastCancer() {
 
   function handleSubmit(e) {
 
-    if(enteredAreaWorst > 50 || enteredAreaWorst < 15) {
-      alert("Enter AreaWorst between range 15 - 50");
-      return;
-    }
-    if(enteredRadiusWorst > 10 || enteredRadiusWorst < 2) {
-      alert("Enter RadiusWorst between range 2 - 10");
-      return;
-    }
-    if(enteredPerimeterMean > 15 || enteredPerimeterMean < 5) {
-      alert("Enter PerimeterMean between range 5 - 15");
-      return;
-    }
-    if(enteredConcavePointsWorst > 1 || enteredConcavePointsWorst < 0) {
-      alert("Enter ConcavePointsWorst between range 0 - 1");
-      return;
-    }
-    if(enteredPerimeterWorst > 15 || enteredPerimeterWorst < 5) {
-      alert("Enter PerimeterWorst between range 5 - 15");
-      return;
-    }
-    if(enteredAreaMean > 40 || enteredAreaMean < 10) {
-      alert("Enter AreaMean between range 10 - 40");
-      return;
-    }
-    if(enteredConcavePointsMean > 1 || enteredConcavePointsMean < 0) {
-      alert("Enter ConcavePointsMean between range 0 - 1");
-      return;
-    }
-    if(enteredAreaSe > 15 || enteredAreaSe < 1) {
-      alert("Enter AreaSe between range 0 - 15");
-      return;
-    }
-    if(enteredRadiusMean > 5 ||enteredRadiusMean < 1) {
-      alert("Enter RadiusMean between range 1 - 5");
-      return;
-    }
+    // if(enteredAreaWorst > 50 || enteredAreaWorst < 15) {
+    //   alert("Enter AreaWorst between range 15 - 50");
+    //   return;
+    // }
+    // if(enteredRadiusWorst > 10 || enteredRadiusWorst < 2) {
+    //   alert("Enter RadiusWorst between range 2 - 10");
+    //   return;
+    // }
+    // if(enteredPerimeterMean > 15 || enteredPerimeterMean < 5) {
+    //   alert("Enter PerimeterMean between range 5 - 15");
+    //   return;
+    // }
+    // if(enteredConcavePointsWorst > 1 || enteredConcavePointsWorst < 0) {
+    //   alert("Enter ConcavePointsWorst between range 0 - 1");
+    //   return;
+    // }
+    // if(enteredPerimeterWorst > 15 || enteredPerimeterWorst < 5) {
+    //   alert("Enter PerimeterWorst between range 5 - 15");
+    //   return;
+    // }
+    // if(enteredAreaMean > 40 || enteredAreaMean < 10) {
+    //   alert("Enter AreaMean between range 10 - 40");
+    //   return;
+    // }
+    // if(enteredConcavePointsMean > 1 || enteredConcavePointsMean < 0) {
+    //   alert("Enter ConcavePointsMean between range 0 - 1");
+    //   return;
+    // }
+    // if(enteredAreaSe > 15 || enteredAreaSe < 1) {
+    //   alert("Enter AreaSe between range 0 - 15");
+    //   return;
+    // }
+    // if(enteredRadiusMean > 5 ||enteredRadiusMean < 1) {
+    //   alert("Enter RadiusMean between range 1 - 5");
+    //   return;
+    // }
    
 
     e.preventDefault();
@@ -140,23 +140,23 @@ export default function BreastCancer() {
       },
       body: JSON.stringify(submittingValue),
     }).then(res => res.text())         
-    .then(text => console.log(text)
+    .then(text => ( console.log(text), setOutput(text), displayPopUp() )
     ).catch((err) => {
       console.log(err);
     });
 
-    fetch('https://techno-vedha.herokuapp.com/breast',{
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json',
-        'Accept': 'application/json'
-      },
-    }).then(res => res.text())         
-    .then(text => setOutput(text),
-    displayPopUp()
-    ).catch((err) => {
-      console.log(err);
-    });  
+    // fetch('https://techno-vedha.herokuapp.com/breast',{
+    //   method: 'GET',
+    //   headers: {
+    //     'Content-type': 'application/json',
+    //     'Accept': 'application/json'
+    //   },
+    // }).then(res => res.text())         
+    // .then(text => setOutput(text),
+    // displayPopUp()
+    // ).catch((err) => {
+    //   console.log(err);
+    // });  
   }
 
 
@@ -190,52 +190,52 @@ export default function BreastCancer() {
   
   <label>
   RADIUS_MEAN:
-    <input type="number" name="RadiusMean" value={enteredRadiusMean} onChange={RadiusMeanChangeHandler}/>
+    <input type="number" name="RadiusMean" step="0.001" required min="6.981" max="28.11" value={enteredRadiusMean} onChange={RadiusMeanChangeHandler}/>
   </label>
   <br />
   <label>
   PERIMETER_MEAN:
-    <input type="number" name="PerimeterMean" value={enteredPerimeterMean} onChange={PerimeterMeanChangeHandler}/>
+    <input type="number" name="PerimeterMean" step="0.001" required min="43.79" max="188.5" value={enteredPerimeterMean} onChange={PerimeterMeanChangeHandler}/>
   </label>
   <br />
   <label>
   AREA_MEAN:
-    <input type="number" name="AreaMean" value={enteredAreaMean} onChange={AreaMeanChangeHandler}/>
+    <input type="number" name="AreaMean" step="0.001" required min="143.5" max="2501" value={enteredAreaMean} onChange={AreaMeanChangeHandler}/>
   </label>
   <br />
   <label>
   CONCAVE POINTS_MEAN:
-    <input type="number" name="ConcavePointsMean" value={enteredConcavePointsMean} onChange={ConcavePointsMeanChangeHandler}/>
+    <input type="number" name="ConcavePointsMean" step="0.001" required min="0" max="0.2012" value={enteredConcavePointsMean} onChange={ConcavePointsMeanChangeHandler}/>
   </label>
   <br />
   <label>
   AREA_SE:
-    <input type="number" name="AreaSe" value={enteredAreaSe} onChange={AreaSeChangeHandler}/>
+    <input type="number" name="AreaSe" step="0.001" required min="6.802" max="542.2" value={enteredAreaSe} onChange={AreaSeChangeHandler}/>
   </label>
   <br />
   <label>
   RADIUS_WORST:
-    <input type="number" name="RadiusWorst" value={enteredRadiusWorst} onChange={RadiusWorstChangeHandler}/>
+    <input type="number" name="RadiusWorst" step="0.001" required min="7.93" max="36.04" value={enteredRadiusWorst} onChange={RadiusWorstChangeHandler}/>
   </label>
   <br />
   <label>
   PERIMETER_WORST:
-    <input type="number" name="PerimeterWorst" value={enteredPerimeterWorst} onChange={PerimeterWorstChangeHandler}/>
+    <input type="number" name="PerimeterWorst" step="0.001" required min="50.41" max="251.2" value={enteredPerimeterWorst} onChange={PerimeterWorstChangeHandler}/>
   </label>
   <br />
   <label>
   AREA_WORST:
-    <input type="number" name="AreaWorst" value={enteredAreaWorst} onChange={AreaWorstChangeHandler}/>
+    <input type="number" name="AreaWorst" step="0.001" required min="185.2" max="4254" value={enteredAreaWorst} onChange={AreaWorstChangeHandler}/>
   </label>
   <br />
   <label>
   CONCAVITY_WORST:
-    <input type="number" name="ConcavityWorst" value={enteredConcavityWorst} onChange={ConcavityWorstChangeHandler}/>
+    <input type="number" name="ConcavityWorst" step="0.001" required min="0" max="1.252" value={enteredConcavityWorst} onChange={ConcavityWorstChangeHandler}/>
   </label>
   <br />
   <label>
   CONCAVE POINTS_WORST:
-    <input type="number" name="ConcavePointsWorst" value={enteredConcavePointsWorst} onChange={ConcavePointsWorstChangeHandler}/>
+    <input type="number" name="ConcavePointsWorst" step="0.001" required min="0" max="0.291" value={enteredConcavePointsWorst} onChange={ConcavePointsWorstChangeHandler}/>
   </label>
   <br />
 
